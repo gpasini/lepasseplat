@@ -1,7 +1,7 @@
 <template>
     <app-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-3xl py-10 text-white leading-tight text-center">
                 Horaires de service
             </h2>
         </template>
@@ -24,3 +24,11 @@
         },
     }
 </script>
+
+<style>
+header {
+    background: url(/img/bg1.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+</style>

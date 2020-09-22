@@ -1,3 +1,5 @@
 <template>
-    <div>Logo SVG de préférence (fichier : resources/js/Jetstream/ApplicationMark.vue)</div>
+    <div>
+        <img class="w-20" src="/img/logo.png" />
+    </div>
 </template>

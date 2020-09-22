@@ -1,9 +1,14 @@
 <template>
     <app-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Accueil
-            </h2>
+            <div class="text-center pb-40 pt-64">
+                <h2 class="font-semibold text-5xl text-white leading-tight">
+                    Le passe plat
+                </h2>
+                <h3 class="text-white text-sm">
+                    Le meilleur des traiteurs
+                </h3>
+            </div>
         </template>
 
         <div class="py-12">
@@ -24,3 +29,11 @@
         },
     }
 </script>
+
+<style>
+header {
+    background: url(/img/bg1.jpeg);
+    background-size: cover;
+    background-position: bottom;
+}
+</style>
