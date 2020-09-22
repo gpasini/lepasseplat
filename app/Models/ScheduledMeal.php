@@ -18,15 +18,6 @@ class ScheduledMeal extends Model
         'date',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'date' => 'date',
-    ];
-
     public function meal() {
         return $this->belongsTo('App\Models\Meal');
     }

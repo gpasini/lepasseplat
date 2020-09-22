@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ScheduledMeal;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,6 +17,24 @@ class CommanderController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Inertia::render('Commander');
+        $year = $request->get('year', (int) date("Y"));
+        $week =  $request->get('week', (int) date("W"));
+
+        $date = new Carbon;
+        $date->setISODate($year, $week);
+
+        $scheduledMeals = ScheduledMeal::with('meal')->whereBetween('date', [
+            $date->startOfWeek()->toDateString(),
+            $date->endOfWeek()->toDateString()
+        ])
+            ->orderBy('date')
+            ->get()
+            ->map
+            ->toArray()
+            ->groupBy('date');
+
+        return Inertia::render('Commander', [
+            'scheduledMeals' => $scheduledMeals
+        ]);
     }
 }
