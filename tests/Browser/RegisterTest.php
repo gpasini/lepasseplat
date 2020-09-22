@@ -25,7 +25,7 @@ class RegisterTest extends DuskTestCase
                 ->type('@password', 'SuperPassword')
                 ->type('@password_confirmation', 'SuperPassword')
                 ->click('@submit')
-                ->assertPathIs('/menu')
+                ->assertPathIs('/commander')
                 ->visit('/user/profile')
                 ->waitForLocation('/user/profile')
                 ->assertInputValue('@name', 'John Doe')
