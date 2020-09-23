@@ -11,6 +11,16 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
+                    <div class="flex justify-between">
+                        <jet-button @click.native="goPrevious()" type="button">
+                            Semaine précédente
+                        </jet-button>
+
+                        <jet-button @click.native="goNext()" type="button">
+                            Semaine suivante
+                        </jet-button>
+                    </div>
+
                     <div class="flex">
                         <div
                             v-for="(scheduledMealsOfDay, day) in scheduledMealsOfWeek"
@@ -18,7 +28,7 @@
                         >
                             <div>{{ day }}</div>
 
-                            <div v-if="scheduledMealsOfDay.length">
+                            <div v-if="scheduledMealsOfDay">
                                 <div v-for="scheduledMeal in scheduledMealsOfDay" :key="scheduledMeal.id">
                                     <img :src="`/storage/${scheduledMeal.meal.photo}`" />
 
@@ -62,6 +72,29 @@
             JetButton,
         },
 
-        props: ['scheduledMealsOfWeek']
+        props: ['scheduledMealsOfWeek', 'week', 'year'],
+
+        methods: {
+            goNext() {
+                console.log('ici');
+                this.$inertia.visit('/commander', {
+                    data: {
+                        week: this.week + 1,
+                        year: this.year
+                    },
+                    preserveScroll: true,
+                })
+            },
+
+            goPrevious() {
+                this.$inertia.visit('/commander', {
+                    data: {
+                        week: this.week - 1,
+                        year: this.year
+                    },
+                    preserveScroll: true,
+                })
+            }
+        }
     }
 </script>

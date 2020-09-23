@@ -3415,6 +3415,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3424,7 +3434,28 @@ __webpack_require__.r(__webpack_exports__);
     PageHeader: _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__["default"],
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  props: ['scheduledMealsOfWeek']
+  props: ['scheduledMealsOfWeek', 'week', 'year'],
+  methods: {
+    goNext: function goNext() {
+      console.log('ici');
+      this.$inertia.visit('/commander', {
+        data: {
+          week: this.week + 1,
+          year: this.year
+        },
+        preserveScroll: true
+      });
+    },
+    goPrevious: function goPrevious() {
+      this.$inertia.visit('/commander', {
+        data: {
+          week: this.week - 1,
+          year: this.year
+        },
+        preserveScroll: true
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -26726,6 +26757,47 @@ var render = function() {
             [
               _c(
                 "div",
+                { staticClass: "flex justify-between" },
+                [
+                  _c(
+                    "jet-button",
+                    {
+                      attrs: { type: "button" },
+                      nativeOn: {
+                        click: function($event) {
+                          return _vm.goPrevious()
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Semaine précédente\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jet-button",
+                    {
+                      attrs: { type: "button" },
+                      nativeOn: {
+                        click: function($event) {
+                          return _vm.goNext()
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        Semaine suivante\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
                 { staticClass: "flex" },
                 _vm._l(_vm.scheduledMealsOfWeek, function(
                   scheduledMealsOfDay,
@@ -26734,7 +26806,7 @@ var render = function() {
                   return _c("div", { key: day }, [
                     _c("div", [_vm._v(_vm._s(day))]),
                     _vm._v(" "),
-                    scheduledMealsOfDay.length
+                    scheduledMealsOfDay
                       ? _c(
                           "div",
                           _vm._l(scheduledMealsOfDay, function(scheduledMeal) {
