@@ -39,7 +39,7 @@
                                 </div>
                             </div>
 
-                            <div>
+                            <div v-else>
                                 Aucun plat au menu
                             </div>
                         </div>

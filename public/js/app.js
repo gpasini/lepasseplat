@@ -26787,13 +26787,11 @@ var render = function() {
                           }),
                           0
                         )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("div", [
-                      _vm._v(
-                        "\n                            Aucun plat au menu\n                        "
-                      )
-                    ])
+                      : _c("div", [
+                          _vm._v(
+                            "\n                            Aucun plat au menu\n                        "
+                          )
+                        ])
                   ])
                 }),
                 0
