@@ -1,9 +1,10 @@
 <template>
     <app-layout>
         <template #header>
-            <h2 class="font-semibold text-3xl py-10 text-white leading-tight text-center">
-                Services & événements
-            </h2>
+            <page-header
+                title="Services & événements"
+                size="small"
+            />
         </template>
 
         <div class="py-12">
@@ -17,18 +18,12 @@
 
 <script>
     import AppLayout from './../Layouts/AppLayout'
+    import PageHeader from './../Components/PageHeader'
 
     export default {
         components: {
             AppLayout,
+            PageHeader,
         },
     }
 </script>
-
-<style>
-header {
-    background: url(/img/bg1.jpeg);
-    background-size: cover;
-    background-position: center;
-}
-</style>

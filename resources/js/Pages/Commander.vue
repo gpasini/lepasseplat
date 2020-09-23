@@ -1,9 +1,10 @@
 <template>
     <app-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Commander
-            </h2>
+            <page-header
+                title="Commander"
+                size="small"
+            />
         </template>
 
         <div class="py-12">
@@ -18,10 +19,12 @@
 
 <script>
     import AppLayout from './../Layouts/AppLayout'
+    import PageHeader from './../Components/PageHeader'
 
     export default {
         components: {
             AppLayout,
+            PageHeader,
         },
 
         props: ['scheduledMeals']
