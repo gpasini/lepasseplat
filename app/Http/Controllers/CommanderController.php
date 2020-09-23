@@ -47,8 +47,6 @@ class CommanderController extends Controller
             $date->addDays(2)->toDateString(),
             $date->addDays(3)->toDateString(),
             $date->addDays(4)->toDateString(),
-            $date->addDays(5)->toDateString(),
-            $date->addDays(6)->toDateString(),
         ]);
 
         $bookingsOfWeek = $daysOfWeek
