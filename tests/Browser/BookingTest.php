@@ -51,11 +51,17 @@ class BookingTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
 
-            ScheduledMeal::factory()->create(['date' => Date::now()->toDateString()]);
+            $sm = ScheduledMeal::factory()->create(['date' => Date::now()->toDateString()]);
 
             $browser->loginAs(User::factory()->create())
                 ->visit('/commander')
-                ->assertSee('Commander');
+                ->with('@week_menu', function ($menu) {
+                    $menu->assertSee('COMMANDER')
+                        ->click('@book');
+                });
+                /* ->with('@bookings', function ($menu) use ($sm) {
+                    $menu->assertSee($sm->meal->titile);
+                }); */
         });
     }
 }

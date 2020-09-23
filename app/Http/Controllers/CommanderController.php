@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\ScheduledMeal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Inertia\Inertia;
 
@@ -30,26 +32,60 @@ class CommanderController extends Controller
         ])
             ->get();
 
-        return Inertia::render('Commander', [
-            'scheduledMealsOfWeek' => collect([
+        $bookings = Booking::with('scheduledMeal.meal')->whereHas('scheduledMeal', function ($query) use ($date) {
+            $query->whereBetween('date', [
                 $date->toDateString(),
-                $date->addDays(1)->toDateString(),
-                $date->addDays(2)->toDateString(),
-                $date->addDays(3)->toDateString(),
-                $date->addDays(4)->toDateString(),
-                $date->addDays(5)->toDateString(),
-                $date->addDays(6)->toDateString(),
-            ])
-                ->mapWithKeys(function ($dayOfWeek) use ($scheduledMeals) {
+                $date->endOfWeek()->toDateString()
+            ]);
+        })
+            ->where('user_id', Auth::user()->id)
+            ->get();
+
+        $daysOfWeek = collect([
+            $date->toDateString(),
+            $date->addDays(1)->toDateString(),
+            $date->addDays(2)->toDateString(),
+            $date->addDays(3)->toDateString(),
+            $date->addDays(4)->toDateString(),
+            $date->addDays(5)->toDateString(),
+            $date->addDays(6)->toDateString(),
+        ]);
+
+        $bookingsOfWeek = $daysOfWeek
+            ->mapWithKeys(function ($dayOfWeek) use ($bookings) {
+                return [
+                    $dayOfWeek => $bookings
+                        ->filter(function ($booking) use ($dayOfWeek) {
+                            return Date::parse($dayOfWeek)->isSameDay($booking->scheduledMeal->date);
+                        })
+                        ->values()
+                        ->toArray()
+                ];
+            });
+
+        return Inertia::render('Commander', [
+            'scheduledMealsOfWeek' => $daysOfWeek
+                ->mapWithKeys(function ($dayOfWeek) use ($scheduledMeals, $bookingsOfWeek) {
                     return [
-                        $dayOfWeek => $scheduledMeals
-                            ->filter(function ($scheduledMeal) use ($dayOfWeek) {
-                                return Date::parse($dayOfWeek)->isSameDay($scheduledMeal->date);
-                            })
-                            ->toArray()
+                        $dayOfWeek => collect(
+                            $scheduledMeals
+                                ->filter(function ($scheduledMeal) use ($dayOfWeek) {
+                                    return Date::parse($dayOfWeek)->isSameDay($scheduledMeal->date);
+                                })
+                                ->values()
+                                ->toArray()
+                            )
+                                ->map(function ($scheduledMeal) use ($bookingsOfWeek) {
+                                    $scheduledMeal['bookable'] = $bookingsOfWeek->flatten(1)->where('scheduled_meal_id', $scheduledMeal['id'])->count() === 0;
+
+                                    return $scheduledMeal;
+                                })
+                                ->toArray()
                     ];
                 })
                 ->toArray(),
+            'bookingsOfWeek' => $bookingsOfWeek->toArray(),
+            'hasBooking' => $bookingsOfWeek->flatten(1)->count() > 0,
             'year' => $year,
             'week' => $week,
             'nextYear' => $year,

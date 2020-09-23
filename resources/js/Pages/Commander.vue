@@ -21,16 +21,17 @@
                         </jet-button>
                     </div>
 
-                    <div class="flex">
+                    <div dusk="week_menu" class="flex">
                         <div
                             v-for="(scheduledMealsOfDay, day) in scheduledMealsOfWeek"
                             :key="day"
+                            class="border m-2 p-2"
                         >
                             <div>{{ day }}</div>
 
-                            <div v-if="scheduledMealsOfDay">
-                                <div v-for="scheduledMeal in scheduledMealsOfDay" :key="scheduledMeal.id">
-                                    <img :src="`/storage/${scheduledMeal.meal.photo}`" />
+                            <div v-if="scheduledMealsOfDay.length > 0">
+                                <div class="border m-2 p-2" v-for="scheduledMeal in scheduledMealsOfDay" :key="scheduledMeal.id">
+                                    <img v-if="scheduledMeal.meal.photo" :src="`/storage/${scheduledMeal.meal.photo}`" />
 
                                     <div>
                                         {{ scheduledMeal.meal.title }}
@@ -43,7 +44,7 @@
                                         {{ scheduledMeal.meal.price }} €
                                     </div>
 
-                                    <jet-button type="button">
+                                    <jet-button v-if="scheduledMeal.bookable" @click.native="book(scheduledMeal)" dusk="book" type="button">
                                         Commander
                                     </jet-button>
                                 </div>
@@ -51,6 +52,44 @@
 
                             <div v-else>
                                 Aucun plat au menu
+                            </div>
+                        </div>
+                    </div>
+
+                    <div dusk="bookings" v-if="hasBooking">
+
+                        Votre commande :
+
+                        <div v-for="(bookingOfDay, day) in bookingsOfWeek" :key="day">
+                            <div class="border m-2 p-2" v-if="bookingOfDay.length > 0">
+                                <div>Jour de la commande : {{ day }}</div>
+                                <div>Contenu de la commande :</div>
+                                <div class="border m-2 p-2" v-for="booking in bookingOfDay" :key="booking.id">
+                                    <div>
+                                        {{ booking.scheduled_meal.meal.title }}
+                                    </div>
+
+                                    <div>
+                                        {{ booking.scheduled_meal.meal.price }} €
+                                    </div>
+
+                                    <div>
+                                        Nombre de part :
+                                        <jet-button @click.native="setQuantity(booking, booking.quantity - 1)" type="button">
+                                            -
+                                        </jet-button>
+
+                                        <span>{{ booking.quantity }}</span>
+
+                                        <jet-button @click.native="setQuantity(booking, booking.quantity + 1)" type="button">
+                                            +
+                                        </jet-button>
+                                    </div>
+
+                                    <jet-button @click.native="unbook(booking)" type="button">
+                                        Annuler
+                                    </jet-button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,15 +103,19 @@
     import AppLayout from './../Layouts/AppLayout'
     import PageHeader from './../Components/PageHeader'
     import JetButton from './../Jetstream/Button'
+    import JetInput from './../Jetstream/Input'
+    import JetLabel from './../Jetstream/Label'
 
     export default {
         components: {
             AppLayout,
             PageHeader,
+            JetInput,
+            JetLabel,
             JetButton,
         },
 
-        props: ['scheduledMealsOfWeek', 'week', 'year'],
+        props: ['scheduledMealsOfWeek', 'bookingsOfWeek', 'week', 'year', 'hasBooking'],
 
         methods: {
             goNext() {
@@ -92,6 +135,31 @@
                         week: this.week - 1,
                         year: this.year
                     },
+                    preserveScroll: true,
+                })
+            },
+
+            book(scheduledMeal) {
+                this.$inertia.post('/book', {
+                    scheduled_meal_id: scheduledMeal.id
+                }, {
+                    preserveScroll: true,
+                })
+            },
+
+            unbook(booking) {
+                this.$inertia.post('/unbook', {
+                    booking_id: booking.id
+                }, {
+                    preserveScroll: true,
+                })
+            },
+
+            setQuantity(booking, quantity) {
+                this.$inertia.post('/book/quantity', {
+                    booking_id: booking.id,
+                    quantity: quantity
+                }, {
                     preserveScroll: true,
                 })
             }

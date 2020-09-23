@@ -32,12 +32,12 @@ class Booking extends Resource
     ];
 
     public static function label() {
-        return 'Réservations';
+        return 'Commandes';
     }
 
     public static function singularLabel()
     {
-        return 'Réservation';
+        return 'Commande';
     }
 
     /**
