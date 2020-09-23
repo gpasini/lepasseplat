@@ -27,14 +27,24 @@ class CommanderController extends Controller
             $date->startOfWeek()->toDateString(),
             $date->endOfWeek()->toDateString()
         ])
-            ->orderBy('date')
             ->get()
             ->map
-            ->toArray()
-            ->groupBy('date');
+            ->toArray();
 
         return Inertia::render('Commander', [
-            'scheduledMeals' => $scheduledMeals
+            'scheduledMealsOfWeek' => collect([
+                $date->startOfWeek()->toDateString(),
+                $date->addDays(1)->toDateString(),
+                $date->addDays(1)->toDateString(),
+                $date->addDays(1)->toDateString(),
+                $date->addDays(1)->toDateString(),
+                $date->addDays(1)->toDateString(),
+                $date->addDays(1)->toDateString(),
+            ])
+                ->mapWithKeys(function ($dayOfWeek) use ($scheduledMeals) {
+                    return [$dayOfWeek => $scheduledMeals->where('date', $dayOfWeek)->toArray()];
+                })
+                ->toArray()
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Meal;
 use App\Models\ScheduledMeal;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -23,7 +24,8 @@ class ScheduledMealFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'meal_id' => Meal::factory(),
+            'date' => $this->faker->date()
         ];
     }
 }

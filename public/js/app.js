@@ -3362,6 +3362,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../Components/PageHeader */ "./resources/js/Components/PageHeader.vue");
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 //
 //
 //
@@ -3381,14 +3382,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PageHeader: _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__["default"]
+    PageHeader: _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__["default"],
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  props: ['scheduledMeals']
+  props: ['scheduledMealsOfWeek']
 });
 
 /***/ }),
@@ -26688,10 +26724,79 @@ var render = function() {
             "div",
             { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
             [
-              _vm._v(
-                "\n                " +
-                  _vm._s(_vm.scheduledMeals) +
-                  "\n            "
+              _c(
+                "div",
+                { staticClass: "flex" },
+                _vm._l(_vm.scheduledMealsOfWeek, function(
+                  scheduledMealsOfDay,
+                  day
+                ) {
+                  return _c("div", { key: day }, [
+                    _c("div", [_vm._v(_vm._s(day))]),
+                    _vm._v(" "),
+                    scheduledMealsOfDay.length
+                      ? _c(
+                          "div",
+                          _vm._l(scheduledMealsOfDay, function(scheduledMeal) {
+                            return _c(
+                              "div",
+                              { key: scheduledMeal.id },
+                              [
+                                _c("img", {
+                                  attrs: {
+                                    src: "/storage/" + scheduledMeal.meal.photo
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(scheduledMeal.meal.title) +
+                                      "\n                                "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(scheduledMeal.meal.description) +
+                                      "\n                                "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(scheduledMeal.meal.price) +
+                                      " €\n                                "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "jet-button",
+                                  { attrs: { type: "button" } },
+                                  [
+                                    _vm._v(
+                                      "\n                                    Commander\n                                "
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          }),
+                          0
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", [
+                      _vm._v(
+                        "\n                            Aucun plat au menu\n                        "
+                      )
+                    ])
+                  ])
+                }),
+                0
               )
             ]
           )
