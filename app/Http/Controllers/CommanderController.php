@@ -74,7 +74,9 @@ class CommanderController extends Controller
                                 ->toArray()
                             )
                                 ->map(function ($scheduledMeal) use ($bookingsOfWeek) {
-                                    $scheduledMeal['bookable'] = $bookingsOfWeek->flatten(1)->where('scheduled_meal_id', $scheduledMeal['id'])->count() === 0;
+                                    $date = Date::parse($scheduledMeal['date']);
+
+                                    $scheduledMeal['bookable'] = ($date->isFuture() || $date->isToday()) && $bookingsOfWeek->flatten(1)->where('scheduled_meal_id', $scheduledMeal['id'])->count() === 0;
 
                                     return $scheduledMeal;
                                 })
