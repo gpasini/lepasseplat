@@ -21,44 +21,50 @@
                         </jet-button>
                     </div>
 
-                    <div dusk="week_menu" class="flex">
-                        <div
-                            v-for="(scheduledMealsOfDay, day) in scheduledMealsOfWeek"
-                            :key="day"
-                            class="border m-2 p-2"
-                        >
-                            <div>{{ day }}</div>
+                    <div class="border m-2 p-2">
+                        <div>
+                            Menu de la semaine
+                        </div>
 
-                            <div v-if="scheduledMealsOfDay.length > 0">
-                                <div class="border m-2 p-2" v-for="scheduledMeal in scheduledMealsOfDay" :key="scheduledMeal.id">
-                                    <img v-if="scheduledMeal.meal.photo" :src="`/storage/${scheduledMeal.meal.photo}`" />
+                        <div dusk="week_menu" class="flex">
+                            <div
+                                v-for="(scheduledMealsOfDay, day) in scheduledMealsOfWeek"
+                                :key="day"
+                                class="border m-2 p-2"
+                            >
+                                <div>{{ day }}</div>
 
-                                    <div>
-                                        {{ scheduledMeal.meal.title }}
+                                <div v-if="scheduledMealsOfDay.length > 0">
+                                    <div class="border m-2 p-2" v-for="scheduledMeal in scheduledMealsOfDay" :key="scheduledMeal.id">
+                                        <img v-if="scheduledMeal.meal.photo" :src="`/storage/${scheduledMeal.meal.photo}`" />
+
+                                        <div>
+                                            {{ scheduledMeal.meal.title }}
+                                        </div>
+
+                                        <div>
+                                            {{ scheduledMeal.meal.description }}
+                                        </div>
+                                        <div>
+                                            {{ scheduledMeal.meal.price }} €
+                                        </div>
+
+                                        <jet-button v-if="scheduledMeal.bookable" @click.native="book(scheduledMeal)" dusk="book" type="button">
+                                            Commander
+                                        </jet-button>
                                     </div>
-
-                                    <div>
-                                        {{ scheduledMeal.meal.description }}
-                                    </div>
-                                    <div>
-                                        {{ scheduledMeal.meal.price }} €
-                                    </div>
-
-                                    <jet-button v-if="scheduledMeal.bookable" @click.native="book(scheduledMeal)" dusk="book" type="button">
-                                        Commander
-                                    </jet-button>
                                 </div>
-                            </div>
 
-                            <div v-else>
-                                Aucun plat au menu
+                                <div v-else>
+                                    Aucun plat au menu
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div dusk="bookings" v-if="hasBooking">
+                    <div class="border m-2 p-2" dusk="bookings" v-if="hasBooking">
 
-                        Votre commande :
+                        Vos commandes de la semaine :
 
                         <div v-for="(bookingOfDay, day) in bookingsOfWeek" :key="day">
                             <div class="border m-2 p-2" v-if="bookingOfDay.length > 0">

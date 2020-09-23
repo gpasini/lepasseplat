@@ -3466,6 +3466,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -26863,111 +26869,124 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "flex", attrs: { dusk: "week_menu" } },
-                _vm._l(_vm.scheduledMealsOfWeek, function(
-                  scheduledMealsOfDay,
-                  day
-                ) {
-                  return _c(
-                    "div",
-                    { key: day, staticClass: "border m-2 p-2" },
-                    [
-                      _c("div", [_vm._v(_vm._s(day))]),
-                      _vm._v(" "),
-                      scheduledMealsOfDay.length > 0
-                        ? _c(
-                            "div",
-                            _vm._l(scheduledMealsOfDay, function(
-                              scheduledMeal
-                            ) {
-                              return _c(
-                                "div",
-                                {
-                                  key: scheduledMeal.id,
-                                  staticClass: "border m-2 p-2"
-                                },
-                                [
-                                  scheduledMeal.meal.photo
-                                    ? _c("img", {
-                                        attrs: {
-                                          src:
-                                            "/storage/" +
-                                            scheduledMeal.meal.photo
-                                        }
-                                      })
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _c("div", [
-                                    _vm._v(
-                                      "\n                                    " +
-                                        _vm._s(scheduledMeal.meal.title) +
-                                        "\n                                "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", [
-                                    _vm._v(
-                                      "\n                                    " +
-                                        _vm._s(scheduledMeal.meal.description) +
-                                        "\n                                "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", [
-                                    _vm._v(
-                                      "\n                                    " +
-                                        _vm._s(scheduledMeal.meal.price) +
-                                        " €\n                                "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  scheduledMeal.bookable
-                                    ? _c(
-                                        "jet-button",
-                                        {
-                                          attrs: {
-                                            dusk: "book",
-                                            type: "button"
-                                          },
-                                          nativeOn: {
-                                            click: function($event) {
-                                              return _vm.book(scheduledMeal)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                    Commander\n                                "
-                                          )
-                                        ]
-                                      )
-                                    : _vm._e()
-                                ],
-                                1
-                              )
-                            }),
-                            0
-                          )
-                        : _c("div", [
-                            _vm._v(
-                              "\n                            Aucun plat au menu\n                        "
-                            )
-                          ])
-                    ]
+              _c("div", { staticClass: "border m-2 p-2" }, [
+                _c("div", [
+                  _vm._v(
+                    "\n                        Menu de la semaine\n                    "
                   )
-                }),
-                0
-              ),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "flex", attrs: { dusk: "week_menu" } },
+                  _vm._l(_vm.scheduledMealsOfWeek, function(
+                    scheduledMealsOfDay,
+                    day
+                  ) {
+                    return _c(
+                      "div",
+                      { key: day, staticClass: "border m-2 p-2" },
+                      [
+                        _c("div", [_vm._v(_vm._s(day))]),
+                        _vm._v(" "),
+                        scheduledMealsOfDay.length > 0
+                          ? _c(
+                              "div",
+                              _vm._l(scheduledMealsOfDay, function(
+                                scheduledMeal
+                              ) {
+                                return _c(
+                                  "div",
+                                  {
+                                    key: scheduledMeal.id,
+                                    staticClass: "border m-2 p-2"
+                                  },
+                                  [
+                                    scheduledMeal.meal.photo
+                                      ? _c("img", {
+                                          attrs: {
+                                            src:
+                                              "/storage/" +
+                                              scheduledMeal.meal.photo
+                                          }
+                                        })
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(
+                                        "\n                                        " +
+                                          _vm._s(scheduledMeal.meal.title) +
+                                          "\n                                    "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(
+                                        "\n                                        " +
+                                          _vm._s(
+                                            scheduledMeal.meal.description
+                                          ) +
+                                          "\n                                    "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", [
+                                      _vm._v(
+                                        "\n                                        " +
+                                          _vm._s(scheduledMeal.meal.price) +
+                                          " €\n                                    "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    scheduledMeal.bookable
+                                      ? _c(
+                                          "jet-button",
+                                          {
+                                            attrs: {
+                                              dusk: "book",
+                                              type: "button"
+                                            },
+                                            nativeOn: {
+                                              click: function($event) {
+                                                return _vm.book(scheduledMeal)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                        Commander\n                                    "
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ],
+                                  1
+                                )
+                              }),
+                              0
+                            )
+                          : _c("div", [
+                              _vm._v(
+                                "\n                                Aucun plat au menu\n                            "
+                              )
+                            ])
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ]),
               _vm._v(" "),
               _vm.hasBooking
                 ? _c(
                     "div",
-                    { attrs: { dusk: "bookings" } },
+                    {
+                      staticClass: "border m-2 p-2",
+                      attrs: { dusk: "bookings" }
+                    },
                     [
                       _vm._v(
-                        "\n\n                    Votre commande :\n\n                    "
+                        "\n\n                    Vos commandes de la semaine :\n\n                    "
                       ),
                       _vm._l(_vm.bookingsOfWeek, function(bookingOfDay, day) {
                         return _c("div", { key: day }, [
