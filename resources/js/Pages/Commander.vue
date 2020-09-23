@@ -32,7 +32,7 @@
                                 :key="day"
                                 class="border m-2 p-2 w-1/4"
                             >
-                                <div>{{ day }}</div>
+                                <div class="capitalize">{{ day | moment("dddd Do MMMM") }}</div>
 
                                 <div v-if="scheduledMealsOfDay.length > 0">
                                     <meal :meal="scheduledMeal.meal" v-for="scheduledMeal in scheduledMealsOfDay" :key="scheduledMeal.id">
@@ -58,7 +58,7 @@
 
                         <div v-for="(bookingOfDay, day) in bookingsOfWeek" :key="day">
                             <div class="border m-2 p-2" v-if="bookingOfDay.length > 0">
-                                <div>Jour de la commande : {{ day }}</div>
+                                <div>Jour de la commande : <div class="capitalize">{{ day | moment("dddd Do MMMM") }}</div></div>
                                 <div>Contenu de la commande :</div>
 
                                 <meal :meal="booking.scheduled_meal.meal" v-for="booking in bookingOfDay" :key="booking.id">

@@ -6,9 +6,16 @@ import { InertiaApp } from '@inertiajs/inertia-vue';
 import { InertiaForm } from 'laravel-jetstream';
 import PortalVue from 'portal-vue';
 
+const moment = require('moment')
+require('moment/locale/fr')
+
 Vue.use(InertiaApp);
 Vue.use(InertiaForm);
 Vue.use(PortalVue);
+
+Vue.use(require('vue-moment'), {
+    moment
+})
 
 const app = document.getElementById('app');
 
