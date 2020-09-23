@@ -1925,6 +1925,45 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/Meal.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/Meal.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    meal: {
+      type: Object,
+      required: true
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/PageHeader.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/PageHeader.vue?vue&type=script&lang=js& ***!
@@ -3362,9 +3401,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../Components/PageHeader */ "./resources/js/Components/PageHeader.vue");
-/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
-/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Components_Meal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Components/Meal */ "./resources/js/Components/Meal.vue");
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
 //
 //
 //
@@ -3458,20 +3498,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
@@ -3481,9 +3508,10 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
     PageHeader: _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__["default"],
-    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__["default"],
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__["default"],
-    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_2__["default"]
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_4__["default"],
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__["default"],
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_3__["default"],
+    Meal: _Components_Meal__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   props: ['scheduledMealsOfWeek', 'bookingsOfWeek', 'week', 'year', 'hasBooking'],
   methods: {
@@ -24325,6 +24353,51 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/Meal.vue?vue&type=template&id=98ae8de4&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/Meal.vue?vue&type=template&id=98ae8de4& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "border m-2 p-2" },
+    [
+      _vm.meal.photo
+        ? _c("img", {
+            attrs: { width: "100", src: "/storage/" + _vm.meal.photo }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", [_vm._v("\n        " + _vm._s(_vm.meal.title) + "\n    ")]),
+      _vm._v(" "),
+      _c("div", [
+        _vm._v("\n        " + _vm._s(_vm.meal.description) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", [_vm._v("\n        " + _vm._s(_vm.meal.price) + " €\n    ")]),
+      _vm._v(" "),
+      _vm._t("actions")
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/PageHeader.vue?vue&type=template&id=0cab0ef2&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/PageHeader.vue?vue&type=template&id=0cab0ef2& ***!
@@ -26885,7 +26958,7 @@ var render = function() {
                   ) {
                     return _c(
                       "div",
-                      { key: day, staticClass: "border m-2 p-2" },
+                      { key: day, staticClass: "border m-2 p-2 w-1/4" },
                       [
                         _c("div", [_vm._v(_vm._s(day))]),
                         _vm._v(" "),
@@ -26895,75 +26968,49 @@ var render = function() {
                               _vm._l(scheduledMealsOfDay, function(
                                 scheduledMeal
                               ) {
-                                return _c(
-                                  "div",
-                                  {
-                                    key: scheduledMeal.id,
-                                    staticClass: "border m-2 p-2"
-                                  },
-                                  [
-                                    scheduledMeal.meal.photo
-                                      ? _c("img", {
-                                          attrs: {
-                                            src:
-                                              "/storage/" +
-                                              scheduledMeal.meal.photo
-                                          }
-                                        })
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    _c("div", [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(scheduledMeal.meal.title) +
-                                          "\n                                    "
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(
-                                            scheduledMeal.meal.description
-                                          ) +
-                                          "\n                                    "
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(scheduledMeal.meal.price) +
-                                          " €\n                                    "
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    scheduledMeal.bookable
-                                      ? _c(
-                                          "jet-button",
-                                          {
-                                            attrs: {
-                                              dusk: "book",
-                                              type: "button"
-                                            },
-                                            nativeOn: {
-                                              click: function($event) {
-                                                return _vm.book(scheduledMeal)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                        Commander\n                                    "
-                                            )
+                                return _c("meal", {
+                                  key: scheduledMeal.id,
+                                  attrs: { meal: scheduledMeal.meal },
+                                  scopedSlots: _vm._u(
+                                    [
+                                      {
+                                        key: "actions",
+                                        fn: function() {
+                                          return [
+                                            scheduledMeal.bookable
+                                              ? _c(
+                                                  "jet-button",
+                                                  {
+                                                    attrs: {
+                                                      dusk: "book",
+                                                      type: "button"
+                                                    },
+                                                    nativeOn: {
+                                                      click: function($event) {
+                                                        return _vm.book(
+                                                          scheduledMeal
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                            Commander\n                                        "
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e()
                                           ]
-                                        )
-                                      : _vm._e()
-                                  ],
-                                  1
-                                )
+                                        },
+                                        proxy: true
+                                      }
+                                    ],
+                                    null,
+                                    true
+                                  )
+                                })
                               }),
-                              0
+                              1
                             )
                           : _c("div", [
                               _vm._v(
@@ -27006,107 +27053,109 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _vm._l(bookingOfDay, function(booking) {
-                                    return _c(
-                                      "div",
-                                      {
-                                        key: booking.id,
-                                        staticClass: "border m-2 p-2"
+                                    return _c("meal", {
+                                      key: booking.id,
+                                      attrs: {
+                                        meal: booking.scheduled_meal.meal
                                       },
-                                      [
-                                        _c("div", [
-                                          _vm._v(
-                                            "\n                                    " +
-                                              _vm._s(
-                                                booking.scheduled_meal.meal
-                                                  .title
-                                              ) +
-                                              "\n                                "
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c("div", [
-                                          _vm._v(
-                                            "\n                                    " +
-                                              _vm._s(
-                                                booking.scheduled_meal.meal
-                                                  .price
-                                              ) +
-                                              " €\n                                "
-                                          )
-                                        ]),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          [
-                                            _vm._v(
-                                              "\n                                    Nombre de part :\n                                    "
-                                            ),
-                                            _c(
-                                              "jet-button",
-                                              {
-                                                attrs: { type: "button" },
-                                                nativeOn: {
-                                                  click: function($event) {
-                                                    return _vm.setQuantity(
-                                                      booking,
-                                                      booking.quantity - 1
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                        -\n                                    "
-                                                )
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c("span", [
-                                              _vm._v(_vm._s(booking.quantity))
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "jet-button",
-                                              {
-                                                attrs: { type: "button" },
-                                                nativeOn: {
-                                                  click: function($event) {
-                                                    return _vm.setQuantity(
-                                                      booking,
-                                                      booking.quantity + 1
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                        +\n                                    "
-                                                )
-                                              ]
-                                            )
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "jet-button",
+                                      scopedSlots: _vm._u(
+                                        [
                                           {
-                                            attrs: { type: "button" },
-                                            nativeOn: {
-                                              click: function($event) {
-                                                return _vm.unbook(booking)
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                    Annuler\n                                "
-                                            )
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
+                                            key: "actions",
+                                            fn: function() {
+                                              return [
+                                                _c(
+                                                  "div",
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                        Nombre de part :\n                                        "
+                                                    ),
+                                                    _c(
+                                                      "jet-button",
+                                                      {
+                                                        attrs: {
+                                                          type: "button"
+                                                        },
+                                                        nativeOn: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.setQuantity(
+                                                              booking,
+                                                              booking.quantity -
+                                                                1
+                                                            )
+                                                          }
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                            -\n                                        "
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c("span", [
+                                                      _vm._v(
+                                                        _vm._s(booking.quantity)
+                                                      )
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "jet-button",
+                                                      {
+                                                        attrs: {
+                                                          type: "button"
+                                                        },
+                                                        nativeOn: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.setQuantity(
+                                                              booking,
+                                                              booking.quantity +
+                                                                1
+                                                            )
+                                                          }
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                            +\n                                        "
+                                                        )
+                                                      ]
+                                                    )
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "jet-button",
+                                                  {
+                                                    attrs: { type: "button" },
+                                                    nativeOn: {
+                                                      click: function($event) {
+                                                        return _vm.unbook(
+                                                          booking
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                        Annuler\n                                    "
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            },
+                                            proxy: true
+                                          }
+                                        ],
+                                        null,
+                                        true
+                                      )
+                                    })
                                   })
                                 ],
                                 2
@@ -40694,6 +40743,75 @@ module.exports = function(module) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/js/Components/Meal.vue":
+/*!******************************************!*\
+  !*** ./resources/js/Components/Meal.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Meal_vue_vue_type_template_id_98ae8de4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Meal.vue?vue&type=template&id=98ae8de4& */ "./resources/js/Components/Meal.vue?vue&type=template&id=98ae8de4&");
+/* harmony import */ var _Meal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Meal.vue?vue&type=script&lang=js& */ "./resources/js/Components/Meal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Meal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Meal_vue_vue_type_template_id_98ae8de4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Meal_vue_vue_type_template_id_98ae8de4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Components/Meal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Components/Meal.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/Components/Meal.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Meal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Meal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/Meal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Meal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Components/Meal.vue?vue&type=template&id=98ae8de4&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/Components/Meal.vue?vue&type=template&id=98ae8de4& ***!
+  \*************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Meal_vue_vue_type_template_id_98ae8de4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Meal.vue?vue&type=template&id=98ae8de4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/Meal.vue?vue&type=template&id=98ae8de4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Meal_vue_vue_type_template_id_98ae8de4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Meal_vue_vue_type_template_id_98ae8de4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

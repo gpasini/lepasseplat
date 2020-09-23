@@ -30,29 +30,19 @@
                             <div
                                 v-for="(scheduledMealsOfDay, day) in scheduledMealsOfWeek"
                                 :key="day"
-                                class="border m-2 p-2"
+                                class="border m-2 p-2 w-1/4"
                             >
                                 <div>{{ day }}</div>
 
                                 <div v-if="scheduledMealsOfDay.length > 0">
-                                    <div class="border m-2 p-2" v-for="scheduledMeal in scheduledMealsOfDay" :key="scheduledMeal.id">
-                                        <img v-if="scheduledMeal.meal.photo" :src="`/storage/${scheduledMeal.meal.photo}`" />
-
-                                        <div>
-                                            {{ scheduledMeal.meal.title }}
-                                        </div>
-
-                                        <div>
-                                            {{ scheduledMeal.meal.description }}
-                                        </div>
-                                        <div>
-                                            {{ scheduledMeal.meal.price }} €
-                                        </div>
-
-                                        <jet-button v-if="scheduledMeal.bookable" @click.native="book(scheduledMeal)" dusk="book" type="button">
-                                            Commander
-                                        </jet-button>
-                                    </div>
+                                    <meal :meal="scheduledMeal.meal" v-for="scheduledMeal in scheduledMealsOfDay" :key="scheduledMeal.id">
+                                        <!-- Boutons spécifiques pour la commande -->
+                                        <template #actions>
+                                            <jet-button v-if="scheduledMeal.bookable" @click.native="book(scheduledMeal)" dusk="book" type="button">
+                                                Commander
+                                            </jet-button>
+                                        </template>
+                                    </meal>
                                 </div>
 
                                 <div v-else>
@@ -70,32 +60,28 @@
                             <div class="border m-2 p-2" v-if="bookingOfDay.length > 0">
                                 <div>Jour de la commande : {{ day }}</div>
                                 <div>Contenu de la commande :</div>
-                                <div class="border m-2 p-2" v-for="booking in bookingOfDay" :key="booking.id">
-                                    <div>
-                                        {{ booking.scheduled_meal.meal.title }}
-                                    </div>
 
-                                    <div>
-                                        {{ booking.scheduled_meal.meal.price }} €
-                                    </div>
+                                <meal :meal="booking.scheduled_meal.meal" v-for="booking in bookingOfDay" :key="booking.id">
+                                    <!-- Boutons spécifiques pour gérer la commande -->
+                                    <template #actions>
+                                        <div>
+                                            Nombre de part :
+                                            <jet-button @click.native="setQuantity(booking, booking.quantity - 1)" type="button">
+                                                -
+                                            </jet-button>
 
-                                    <div>
-                                        Nombre de part :
-                                        <jet-button @click.native="setQuantity(booking, booking.quantity - 1)" type="button">
-                                            -
+                                            <span>{{ booking.quantity }}</span>
+
+                                            <jet-button @click.native="setQuantity(booking, booking.quantity + 1)" type="button">
+                                                +
+                                            </jet-button>
+                                        </div>
+
+                                        <jet-button @click.native="unbook(booking)" type="button">
+                                            Annuler
                                         </jet-button>
-
-                                        <span>{{ booking.quantity }}</span>
-
-                                        <jet-button @click.native="setQuantity(booking, booking.quantity + 1)" type="button">
-                                            +
-                                        </jet-button>
-                                    </div>
-
-                                    <jet-button @click.native="unbook(booking)" type="button">
-                                        Annuler
-                                    </jet-button>
-                                </div>
+                                    </template>
+                                </meal>
                             </div>
                         </div>
                     </div>
@@ -108,6 +94,7 @@
 <script>
     import AppLayout from './../Layouts/AppLayout'
     import PageHeader from './../Components/PageHeader'
+    import Meal from './../Components/Meal'
     import JetButton from './../Jetstream/Button'
     import JetInput from './../Jetstream/Input'
     import JetLabel from './../Jetstream/Label'
@@ -119,6 +106,7 @@
             JetInput,
             JetLabel,
             JetButton,
+            Meal,
         },
 
         props: ['scheduledMealsOfWeek', 'bookingsOfWeek', 'week', 'year', 'hasBooking'],
