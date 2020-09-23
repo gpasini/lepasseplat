@@ -27,9 +27,7 @@ class CommanderController extends Controller
             $date->startOfWeek()->toDateString(),
             $date->endOfWeek()->toDateString()
         ])
-            ->get()
-            ->map
-            ->toArray();
+            ->get();
 
         return Inertia::render('Commander', [
             'scheduledMealsOfWeek' => collect([
@@ -42,7 +40,13 @@ class CommanderController extends Controller
                 $date->addDays(1)->toDateString(),
             ])
                 ->mapWithKeys(function ($dayOfWeek) use ($scheduledMeals) {
-                    return [$dayOfWeek => $scheduledMeals->where('date', $dayOfWeek)->toArray()];
+                    return [
+                        $dayOfWeek => $scheduledMeals
+                            ->filter(function ($scheduledMeal) use ($dayOfWeek) {
+                                return Carbon::parse($dayOfWeek)->isSameDay(Carbon::parse(($scheduledMeal->date)));
+                            })
+                            ->toArray()
+                    ];
                 })
                 ->toArray()
         ]);
