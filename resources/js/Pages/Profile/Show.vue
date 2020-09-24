@@ -1,9 +1,10 @@
 <template>
     <app-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Profil
-            </h2>
+            <page-header
+                title="Profil"
+                size="small"
+            />
         </template>
 
         <div>
@@ -39,6 +40,7 @@
     import TwoFactorAuthenticationForm from './TwoFactorAuthenticationForm'
     import UpdatePasswordForm from './UpdatePasswordForm'
     import UpdateProfileInformationForm from './UpdateProfileInformationForm'
+    import PageHeader from './../../Components/PageHeader'
 
     export default {
         props: ['sessions'],
@@ -51,6 +53,7 @@
             TwoFactorAuthenticationForm,
             UpdatePasswordForm,
             UpdateProfileInformationForm,
+            PageHeader,
         },
     }
 </script>
