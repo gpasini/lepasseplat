@@ -4,17 +4,24 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Text;
 
-class ScheduledMeal extends Resource
+class Post extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\ScheduledMeal::class;
+    public static $model = \App\Models\Post::class;
+
+    /**
+     * The single value that should be used to represent the resource when being displayed.
+     *
+     * @var string
+     */
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -22,22 +29,16 @@ class ScheduledMeal extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'date',
+        'id', 'title', 'description',
     ];
 
-    public function title()
-    {
-        return $this->meal->title . ' ('. $this->date->format('m/d/Y') .')';
-    }
-
-    public static function label()
-    {
-        return 'Plats au menu';
+    public static function label() {
+        return 'Articles';
     }
 
     public static function singularLabel()
     {
-        return 'Plat au menu';
+        return 'Article';
     }
 
     /**
@@ -49,9 +50,9 @@ class ScheduledMeal extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('Plat', 'meal', 'App\Nova\Meal')->showCreateRelationButton(),
-            Date::make('Date')->rules(['required', 'date'])->format('DD/MM/YYYY')->firstDayOfWeek(1),
-            HasMany::make('Commandes', 'bookings', 'App\Nova\Booking'),
+            Text::make('Titre', 'title')->rules('required'),
+            Markdown::make('Description')->rules('required'),
+            Date::make('Publié le', 'published_at')->rules(['nullable', 'date'])->format('DD/MM/YYYY')->firstDayOfWeek(1),
         ];
     }
 
@@ -74,9 +75,7 @@ class ScheduledMeal extends Resource
      */
     public function filters(Request $request)
     {
-        return [
-            new Filters\ScheduledDateFilter,
-        ];
+        return [];
     }
 
     /**
