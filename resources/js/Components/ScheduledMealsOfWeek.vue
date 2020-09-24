@@ -135,11 +135,15 @@ export default {
   methods: {
     book() {
         this.$inertia.post('/book', {
-            scheduled_meal_id: this.selected.id
+            scheduled_meal_id: this.selected.id,
+            quantity: this.quantity,
         }, {
             preserveScroll: true,
         })
-          .then(() => this.selected = null)
+          .then(() => {
+            this.selected = null;
+            this.quantity = 1;
+          })
     },
 
     goNext() {

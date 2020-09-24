@@ -2411,11 +2411,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$inertia.post('/book', {
-        scheduled_meal_id: this.selected.id
+        scheduled_meal_id: this.selected.id,
+        quantity: this.quantity
       }, {
         preserveScroll: true
       }).then(function () {
-        return _this.selected = null;
+        _this.selected = null;
+        _this.quantity = 1;
       });
     },
     goNext: function goNext() {
@@ -51475,25 +51477,27 @@ var render = function() {
                                         _vm._v(
                                           "\n                        Nombre de part :\n                        "
                                         ),
-                                        _c(
-                                          "jet-button",
-                                          {
-                                            attrs: { type: "button" },
-                                            nativeOn: {
-                                              click: function($event) {
-                                                return _vm.setQuantity(
-                                                  booking,
-                                                  booking.quantity - 1
+                                        booking.quantity > 1
+                                          ? _c(
+                                              "jet-button",
+                                              {
+                                                attrs: { type: "button" },
+                                                nativeOn: {
+                                                  click: function($event) {
+                                                    return _vm.setQuantity(
+                                                      booking,
+                                                      booking.quantity - 1
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                            -\n                        "
                                                 )
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                            -\n                        "
+                                              ]
                                             )
-                                          ]
-                                        ),
+                                          : _vm._e(),
                                         _vm._v(" "),
                                         _c("span", [
                                           _vm._v(_vm._s(booking.quantity))

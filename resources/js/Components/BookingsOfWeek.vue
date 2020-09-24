@@ -12,7 +12,7 @@
                     <template #actions>
                         <div v-if="editable && booking.editable">
                             Nombre de part :
-                            <jet-button @click.native="setQuantity(booking, booking.quantity - 1)" type="button">
+                            <jet-button v-if="booking.quantity > 1" @click.native="setQuantity(booking, booking.quantity - 1)" type="button">
                                 -
                             </jet-button>
 
