@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 
 class Post extends Resource
@@ -53,6 +54,10 @@ class Post extends Resource
             Text::make('Titre', 'title')->rules('required'),
             Markdown::make('Description')->rules('required'),
             Date::make('Publié le', 'published_at')->rules(['nullable', 'date'])->format('DD/MM/YYYY')->firstDayOfWeek(1),
+            Select::make('Page', 'page')->options([
+                'services' => 'Services & événements',
+                'horaires' => 'Horaires de service',
+            ])->displayUsingLabels(),
         ];
     }
 

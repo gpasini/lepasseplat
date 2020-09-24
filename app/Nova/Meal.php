@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Image;
 
@@ -63,6 +64,8 @@ class Meal extends Resource
                 ->rules('required', 'max:255'),
 
             Image::make('Photo'),
+
+            File::make('Fichier', 'file'),
         ];
     }
 

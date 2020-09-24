@@ -6,11 +6,14 @@
           {{ meal.title }}
       </div>
 
-      <div>
+      <div v-if="meal.description">
           {{ meal.description }}
       </div>
       <div>
           {{ meal.price }} €
+      </div>
+      <div v-if="meal.file">
+          <a :href="`/storage/${meal.file}`" target="_blank">Fichier</a>
       </div>
 
       <slot name="actions"></slot>

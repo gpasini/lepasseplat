@@ -10,32 +10,35 @@
       </jet-button>
     </div>
 
-    <div v-for="post in posts.data" :key="post.id">
-        ID : {{ post.id }}
-        <br>
-        Publié le : {{ post.published_at | moment("dddd Do MMMM") }}
-        <br>
-        Titre : {{ post.title }}
-        <br>
-        Markdown :
-        <vue-showdown class="markdown-text" :markdown="post.description" tag="span"/>
-    </div>
+    <post :display-title="displayPostTitles" :display-publication-date="displayPostPublicationDates" :post="post" v-for="post in posts.data" :key="post.id" />
   </div>
 </template>
 
 <script>
 import JetButton from './../Jetstream/Button'
+import Post from './Post'
 
 export default {
   components: {
     JetButton,
+    Post,
   },
 
   props: {
     posts: {
       type: Object,
       required: true
-    }
+    },
+
+    displayPostTitles: {
+      type: Boolean,
+      default: true,
+    },
+
+    displayPostPublicationDates: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   methods: {

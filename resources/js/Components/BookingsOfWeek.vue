@@ -23,23 +23,50 @@
                             </jet-button>
                         </div>
 
-                        <jet-button v-if="editable && booking.editable" @click.native="unbook(booking)" type="button">
+                        <jet-button v-if="editable && booking.editable" @click.native="selected = booking" type="button">
                             Annuler
                         </jet-button>
                     </template>
                 </meal>
             </div>
         </div>
+
+        <!-- Delete Account Confirmation Modal -->
+        <jet-dialog-modal :show="selected" @close="selected = null">
+            <template #title>
+                Annulation de votre commande
+            </template>
+
+            <template #content>
+                Êtes-vous sur de vouloir annuler votre commande ?
+            </template>
+
+            <template #footer>
+                <jet-secondary-button @click.native="selected = null">
+                    Conserver la commande
+                </jet-secondary-button>
+
+                <jet-danger-button class="ml-2" @click.native="unbook()">
+                    Annuler la commande
+                </jet-danger-button>
+            </template>
+        </jet-dialog-modal>
     </div>
 </template>
 
 <script>
+import JetDialogModal from './../Jetstream/DialogModal'
+import JetDangerButton from './../Jetstream/DangerButton'
+import JetSecondaryButton from './../Jetstream/SecondaryButton'
 import JetButton from './../Jetstream/Button'
 import Meal from './Meal'
 
 export default {
   components: {
     JetButton,
+    JetDialogModal,
+    JetDangerButton,
+    JetSecondaryButton,
     Meal,
   },
 
@@ -55,13 +82,20 @@ export default {
     }
   },
 
+  data() {
+      return {
+          selected: null
+      };
+  },
+
   methods: {
-    unbook(booking) {
+    unbook() {
         this.$inertia.post('/unbook', {
-            booking_id: booking.id
+            booking_id: this.selected.id
         }, {
             preserveScroll: true,
         })
+            .then(() => this.selected = null)
     },
 
     setQuantity(booking, quantity) {
