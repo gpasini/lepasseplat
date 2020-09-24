@@ -2,6 +2,10 @@
 
 namespace App\Nova;
 
+use App\Nova\Lenses\BookingsOfDay;
+use App\Nova\Lenses\BookingsOfNextWeek;
+use App\Nova\Lenses\BookingsOfTomorrow;
+use App\Nova\Lenses\BookingsOfWeek;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\BelongsTo;
@@ -87,7 +91,12 @@ class Booking extends Resource
      */
     public function lenses(Request $request)
     {
-        return [];
+        return [
+            new BookingsOfDay,
+            new BookingsOfTomorrow,
+            new BookingsOfWeek,
+            new BookingsOfNextWeek,
+        ];
     }
 
     /**
