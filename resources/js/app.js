@@ -5,6 +5,7 @@ import Vue from 'vue';
 import { InertiaApp } from '@inertiajs/inertia-vue';
 import { InertiaForm } from 'laravel-jetstream';
 import PortalVue from 'portal-vue';
+import VueShowdown from "vue-showdown";
 
 const moment = require('moment')
 require('moment/locale/fr')
@@ -16,6 +17,13 @@ Vue.use(PortalVue);
 Vue.use(require('vue-moment'), {
     moment
 })
+
+Vue.use(VueShowdown, {
+  options: {
+    emoji: true,
+    flavor: "github"
+  }
+});
 
 const app = document.getElementById('app');
 

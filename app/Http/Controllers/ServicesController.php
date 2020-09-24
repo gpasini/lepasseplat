@@ -18,7 +18,7 @@ class ServicesController extends Controller
     public function __invoke(Request $request)
     {
         return Inertia::render('Services', [
-            'posts' => Post::where('published_at',  '<=', Date::now())->paginate()
+            'posts' => Post::where('published_at',  '<=', Date::now())->orderBy('published_at', 'desc')->orderBy('updated_at', 'desc')->paginate()
         ]);
     }
 }
