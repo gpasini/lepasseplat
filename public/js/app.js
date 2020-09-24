@@ -2155,6 +2155,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2170,6 +2180,26 @@ __webpack_require__.r(__webpack_exports__);
     bookable: {
       type: Boolean,
       "default": true
+    },
+    week: {
+      type: Number,
+      required: true
+    },
+    year: {
+      type: Number,
+      required: true
+    },
+    previousWeek: {
+      type: Boolean,
+      "default": true
+    },
+    nextWeek: {
+      type: Boolean,
+      "default": true
+    },
+    route: {
+      type: String,
+      "default": 'commander'
     }
   },
   methods: {
@@ -2177,6 +2207,28 @@ __webpack_require__.r(__webpack_exports__);
       this.$inertia.post('/book', {
         scheduled_meal_id: scheduledMeal.id
       }, {
+        preserveScroll: true
+      });
+    },
+    goNext: function goNext() {
+      this.$inertia.visit('/change-week', {
+        data: {
+          week: this.week,
+          year: this.year,
+          action: 'next',
+          route: this.route
+        },
+        preserveScroll: true
+      });
+    },
+    goPrevious: function goPrevious() {
+      this.$inertia.visit('/change-week', {
+        data: {
+          week: this.week,
+          year: this.year,
+          action: 'previous',
+          route: this.route
+        },
         preserveScroll: true
       });
     }
@@ -3539,6 +3591,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3548,7 +3608,7 @@ __webpack_require__.r(__webpack_exports__);
     PageHeader: _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__["default"],
     ScheduledMealsOfWeek: _Components_ScheduledMealsOfWeek__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
-  props: ['scheduledMealsOfWeek']
+  props: ['scheduledMealsOfWeek', 'week', 'year']
 });
 
 /***/ }),
@@ -3598,12 +3658,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -3623,28 +3677,7 @@ __webpack_require__.r(__webpack_exports__);
     ScheduledMealsOfWeek: _Components_ScheduledMealsOfWeek__WEBPACK_IMPORTED_MODULE_2__["default"],
     BookingsOfWeek: _Components_BookingsOfWeek__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
-  props: ['scheduledMealsOfWeek', 'bookingsOfWeek', 'week', 'year', 'hasBooking'],
-  methods: {
-    goNext: function goNext() {
-      console.log('ici');
-      this.$inertia.visit('/commander', {
-        data: {
-          week: this.week + 1,
-          year: this.year
-        },
-        preserveScroll: true
-      });
-    },
-    goPrevious: function goPrevious() {
-      this.$inertia.visit('/commander', {
-        data: {
-          week: this.week - 1,
-          year: this.year
-        },
-        preserveScroll: true
-      });
-    }
-  }
+  props: ['scheduledMealsOfWeek', 'bookingsOfWeek', 'week', 'year', 'hasBooking']
 });
 
 /***/ }),
@@ -46214,6 +46247,45 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "border m-2 p-2" }, [
+    _vm.nextWeek || _vm.previousWeek
+      ? _c(
+          "div",
+          { staticClass: "flex justify-between" },
+          [
+            _vm.previousWeek
+              ? _c(
+                  "jet-button",
+                  {
+                    attrs: { type: "button" },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.goPrevious()
+                      }
+                    }
+                  },
+                  [_vm._v("\n            Semaine précédente\n        ")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.nextWeek
+              ? _c(
+                  "jet-button",
+                  {
+                    attrs: { type: "button" },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.goNext()
+                      }
+                    }
+                  },
+                  [_vm._v("\n            Semaine suivante\n        ")]
+                )
+              : _vm._e()
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
     _c("div", [_vm._v("\n        Menu de la semaine\n    ")]),
     _vm._v(" "),
     _c(
@@ -46222,7 +46294,7 @@ var render = function() {
       _vm._l(_vm.scheduledMealsOfWeek, function(scheduledMealsOfDay, day) {
         return _c("div", { key: day, staticClass: "border m-2 p-2 w-1/4" }, [
           _c("div", { staticClass: "capitalize" }, [
-            _vm._v(_vm._s(_vm._f("moment")(day, "dddd Do MMMM")))
+            _vm._v(_vm._s(_vm._f("moment")(day, "dddd Do MMMM YYYY")))
           ]),
           _vm._v(" "),
           scheduledMealsOfDay.length > 0
@@ -48699,8 +48771,13 @@ var render = function() {
             [
               _c("scheduled-meals-of-week", {
                 attrs: {
+                  "scheduled-meals-of-week": _vm.scheduledMealsOfWeek,
+                  week: _vm.week,
+                  year: _vm.year,
                   bookable: false,
-                  "scheduled-meals-of-week": _vm.scheduledMealsOfWeek
+                  "next-week": true,
+                  "previous-week": true,
+                  route: "accueil"
                 }
               })
             ],
@@ -48758,49 +48835,12 @@ var render = function() {
             "div",
             { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
             [
-              _c(
-                "div",
-                { staticClass: "flex justify-between" },
-                [
-                  _c(
-                    "jet-button",
-                    {
-                      attrs: { type: "button" },
-                      nativeOn: {
-                        click: function($event) {
-                          return _vm.goPrevious()
-                        }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        Semaine précédente\n                    "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "jet-button",
-                    {
-                      attrs: { type: "button" },
-                      nativeOn: {
-                        click: function($event) {
-                          return _vm.goNext()
-                        }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "\n                        Semaine suivante\n                    "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
               _c("scheduled-meals-of-week", {
-                attrs: { "scheduled-meals-of-week": _vm.scheduledMealsOfWeek }
+                attrs: {
+                  "scheduled-meals-of-week": _vm.scheduledMealsOfWeek,
+                  week: _vm.week,
+                  year: _vm.year
+                }
               }),
               _vm._v(" "),
               _vm.hasBooking

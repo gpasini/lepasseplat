@@ -22,7 +22,9 @@ class AccueilController extends Controller
         $scheduledMealsOfWeek = ScheduledMeal::getScheduledMealsOfWeek($year, $week);
 
         return Inertia::render('Accueil', [
-            'scheduledMealsOfWeek' => $scheduledMealsOfWeek->toArray()
+            'scheduledMealsOfWeek' => $scheduledMealsOfWeek->toArray(),
+            'year' => $year,
+            'week' => $week,
         ]);
     }
 }

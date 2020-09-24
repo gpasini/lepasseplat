@@ -11,18 +11,12 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
-                    <div class="flex justify-between">
-                        <jet-button @click.native="goPrevious()" type="button">
-                            Semaine précédente
-                        </jet-button>
-
-                        <jet-button @click.native="goNext()" type="button">
-                            Semaine suivante
-                        </jet-button>
-                    </div>
-
                     <!-- Menu de la semaine -->
-                    <scheduled-meals-of-week :scheduled-meals-of-week="scheduledMealsOfWeek" />
+                    <scheduled-meals-of-week
+                        :scheduled-meals-of-week="scheduledMealsOfWeek"
+                        :week="week"
+                        :year="year"
+                    />
 
                     <!-- Réservations de la semaine -->
                     <bookings-of-week :bookings-of-week="bookingsOfWeek" v-if="hasBooking" />
@@ -54,29 +48,6 @@
             BookingsOfWeek,
         },
 
-        props: ['scheduledMealsOfWeek', 'bookingsOfWeek', 'week', 'year', 'hasBooking'],
-
-        methods: {
-            goNext() {
-                console.log('ici');
-                this.$inertia.visit('/commander', {
-                    data: {
-                        week: this.week + 1,
-                        year: this.year
-                    },
-                    preserveScroll: true,
-                })
-            },
-
-            goPrevious() {
-                this.$inertia.visit('/commander', {
-                    data: {
-                        week: this.week - 1,
-                        year: this.year
-                    },
-                    preserveScroll: true,
-                })
-            },
-        }
+        props: ['scheduledMealsOfWeek', 'bookingsOfWeek', 'week', 'year', 'hasBooking']
     }
 </script>
