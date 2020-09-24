@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ScheduledMeal;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,6 +16,13 @@ class AccueilController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return Inertia::render('Accueil');
+        $year = (int) $request->get('year', date("Y"));
+        $week =  (int) $request->get('week', date("W"));
+
+        $scheduledMealsOfWeek = ScheduledMeal::getScheduledMealsOfWeek($year, $week);
+
+        return Inertia::render('Accueil', [
+            'scheduledMealsOfWeek' => $scheduledMealsOfWeek->toArray()
+        ]);
     }
 }

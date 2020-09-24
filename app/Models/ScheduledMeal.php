@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Date;
 
 class ScheduledMeal extends Model
 {
@@ -33,5 +34,41 @@ class ScheduledMeal extends Model
 
     public function bookings() {
         return $this->hasMany('App\Models\Booking');
+    }
+
+    public static function getScheduledMealsOfWeek($year, $week) {
+        $date = Date::now()
+            ->setISODate($year, $week)
+            ->startOfWeek();
+
+        $scheduledMeals = ScheduledMeal::with('meal')->whereBetween('date', [
+            $date->toDateString(),
+            $date->endOfWeek()->toDateString()
+        ])
+            ->get();
+
+        return ScheduledMeal::getDaysOfWeek($date)
+                ->mapWithKeys(function ($dayOfWeek) use ($scheduledMeals) {
+                    return [
+                        $dayOfWeek => collect(
+                            $scheduledMeals
+                                ->filter(function ($scheduledMeal) use ($dayOfWeek) {
+                                    return Date::parse($dayOfWeek)->isSameDay($scheduledMeal->date);
+                                })
+                                ->values()
+                                ->toArray()
+                            )
+                    ];
+                });
+    }
+
+    public static function getDaysOfWeek($date) {
+        return collect([
+            $date->startOfWeek()->toDateString(),
+            $date->startOfWeek()->addDays(1)->toDateString(),
+            $date->startOfWeek()->addDays(2)->toDateString(),
+            $date->startOfWeek()->addDays(3)->toDateString(),
+            $date->startOfWeek()->addDays(4)->toDateString(),
+        ]);
     }
 }

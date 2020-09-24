@@ -22,69 +22,37 @@ class CommanderController extends Controller
         $year = (int) $request->get('year', date("Y"));
         $week =  (int) $request->get('week', date("W"));
 
-        $date = Date::now()
-            ->setISODate($year, $week)
-            ->startOfWeek();
+        $scheduledMealsOfWeek = ScheduledMeal::getScheduledMealsOfWeek($year, $week);
 
-        $scheduledMeals = ScheduledMeal::with('meal')->whereBetween('date', [
-            $date->toDateString(),
-            $date->endOfWeek()->toDateString()
-        ])
-            ->get();
-
-        $bookings = Booking::with('scheduledMeal.meal')->whereHas('scheduledMeal', function ($query) use ($date) {
-            $query->whereBetween('date', [
-                $date->toDateString(),
-                $date->endOfWeek()->toDateString()
-            ]);
-        })
-            ->where('user_id', Auth::user()->id)
-            ->get();
-
-        $daysOfWeek = collect([
-            $date->toDateString(),
-            $date->addDays(1)->toDateString(),
-            $date->addDays(2)->toDateString(),
-            $date->addDays(3)->toDateString(),
-            $date->addDays(4)->toDateString(),
-        ]);
-
-        $bookingsOfWeek = $daysOfWeek
-            ->mapWithKeys(function ($dayOfWeek) use ($bookings) {
-                return [
-                    $dayOfWeek => $bookings
-                        ->filter(function ($booking) use ($dayOfWeek) {
-                            return Date::parse($dayOfWeek)->isSameDay($booking->scheduledMeal->date);
-                        })
-                        ->values()
-                        ->toArray()
-                ];
-            });
+        $bookingsOfWeek = Booking::getBookingsOfWeek($year, $week);
 
         return Inertia::render('Commander', [
-            'scheduledMealsOfWeek' => $daysOfWeek
-                ->mapWithKeys(function ($dayOfWeek) use ($scheduledMeals, $bookingsOfWeek) {
-                    return [
-                        $dayOfWeek => collect(
-                            $scheduledMeals
-                                ->filter(function ($scheduledMeal) use ($dayOfWeek) {
-                                    return Date::parse($dayOfWeek)->isSameDay($scheduledMeal->date);
-                                })
-                                ->values()
-                                ->toArray()
-                            )
-                                ->map(function ($scheduledMeal) use ($bookingsOfWeek) {
-                                    $date = Date::parse($scheduledMeal['date']);
+            'scheduledMealsOfWeek' => $scheduledMealsOfWeek
+                ->map(function ($scheduledMealsOfDay) use ($bookingsOfWeek) {
+                    return $scheduledMealsOfDay
+                        ->map(function ($scheduledMeal) use ($bookingsOfWeek) {
+                            $date = Date::parse($scheduledMeal['date']);
 
-                                    $scheduledMeal['bookable'] = ($date->isFuture() || $date->isToday()) && $bookingsOfWeek->flatten(1)->where('scheduled_meal_id', $scheduledMeal['id'])->count() === 0;
+                            $scheduledMeal['bookable'] = ($date->isFuture() || $date->isToday()) && $bookingsOfWeek->flatten(1)->where('scheduled_meal_id', $scheduledMeal['id'])->count() === 0;
 
-                                    return $scheduledMeal;
-                                })
-                                ->toArray()
-                    ];
+                            return $scheduledMeal;
+                        });
                 })
                 ->toArray(),
-            'bookingsOfWeek' => $bookingsOfWeek->toArray(),
+            'bookingsOfWeek' => $bookingsOfWeek
+                ->map(function ($bookingsOfDay) {
+                    return $bookingsOfDay
+                        ->map(function ($booking) {
+                            $booking = $booking->toArray();
+
+                            $date = Date::parse($booking['scheduled_meal']['date']);
+
+                            $booking['editable'] = $date->isFuture() || $date->isToday();
+
+                            return $booking;
+                        });
+            })
+                ->toArray(),
             'hasBooking' => $bookingsOfWeek->flatten(1)->count() > 0,
             'year' => $year,
             'week' => $week,

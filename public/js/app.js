@@ -1925,6 +1925,90 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/BookingsOfWeek.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/BookingsOfWeek.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Meal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Meal */ "./resources/js/Components/Meal.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Meal: _Meal__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  props: {
+    bookingsOfWeek: {
+      type: Object,
+      required: true
+    },
+    editable: {
+      type: Boolean,
+      "default": true
+    }
+  },
+  methods: {
+    unbook: function unbook(booking) {
+      this.$inertia.post('/unbook', {
+        booking_id: booking.id
+      }, {
+        preserveScroll: true
+      });
+    },
+    setQuantity: function setQuantity(booking, quantity) {
+      this.$inertia.post('/book/quantity', {
+        booking_id: booking.id,
+        quantity: quantity
+      }, {
+        preserveScroll: true
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/Meal.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/Meal.vue?vue&type=script&lang=js& ***!
@@ -2021,6 +2105,80 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return [];
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Meal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Meal */ "./resources/js/Components/Meal.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Meal: _Meal__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  props: {
+    scheduledMealsOfWeek: {
+      type: Object,
+      required: true
+    },
+    bookable: {
+      type: Boolean,
+      "default": true
+    }
+  },
+  methods: {
+    book: function book(scheduledMeal) {
+      this.$inertia.post('/book', {
+        scheduled_meal_id: scheduledMeal.id
+      }, {
+        preserveScroll: true
+      });
     }
   }
 });
@@ -3361,6 +3519,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../Components/PageHeader */ "./resources/js/Components/PageHeader.vue");
+/* harmony import */ var _Components_ScheduledMealsOfWeek__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Components/ScheduledMealsOfWeek */ "./resources/js/Components/ScheduledMealsOfWeek.vue");
 //
 //
 //
@@ -3379,13 +3538,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
-    PageHeader: _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__["default"]
-  }
+    PageHeader: _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ScheduledMealsOfWeek: _Components_ScheduledMealsOfWeek__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  props: ['scheduledMealsOfWeek']
 });
 
 /***/ }),
@@ -3401,10 +3564,12 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../Components/PageHeader */ "./resources/js/Components/PageHeader.vue");
-/* harmony import */ var _Components_Meal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Components/Meal */ "./resources/js/Components/Meal.vue");
-/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
-/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Components_ScheduledMealsOfWeek__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Components/ScheduledMealsOfWeek */ "./resources/js/Components/ScheduledMealsOfWeek.vue");
+/* harmony import */ var _Components_BookingsOfWeek__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../Components/BookingsOfWeek */ "./resources/js/Components/BookingsOfWeek.vue");
+/* harmony import */ var _Components_Meal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../Components/Meal */ "./resources/js/Components/Meal.vue");
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
 //
 //
 //
@@ -3439,65 +3604,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 
 
 
@@ -3508,10 +3616,12 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
     PageHeader: _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__["default"],
-    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_4__["default"],
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__["default"],
-    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_3__["default"],
-    Meal: _Components_Meal__WEBPACK_IMPORTED_MODULE_2__["default"]
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_6__["default"],
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_7__["default"],
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_5__["default"],
+    Meal: _Components_Meal__WEBPACK_IMPORTED_MODULE_4__["default"],
+    ScheduledMealsOfWeek: _Components_ScheduledMealsOfWeek__WEBPACK_IMPORTED_MODULE_2__["default"],
+    BookingsOfWeek: _Components_BookingsOfWeek__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: ['scheduledMealsOfWeek', 'bookingsOfWeek', 'week', 'year', 'hasBooking'],
   methods: {
@@ -3531,28 +3641,6 @@ __webpack_require__.r(__webpack_exports__);
           week: this.week - 1,
           year: this.year
         },
-        preserveScroll: true
-      });
-    },
-    book: function book(scheduledMeal) {
-      this.$inertia.post('/book', {
-        scheduled_meal_id: scheduledMeal.id
-      }, {
-        preserveScroll: true
-      });
-    },
-    unbook: function unbook(booking) {
-      this.$inertia.post('/unbook', {
-        booking_id: booking.id
-      }, {
-        preserveScroll: true
-      });
-    },
-    setQuantity: function setQuantity(booking, quantity) {
-      this.$inertia.post('/book/quantity', {
-        booking_id: booking.id,
-        quantity: quantity
-      }, {
         preserveScroll: true
       });
     }
@@ -45880,6 +45968,152 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/BookingsOfWeek.vue?vue&type=template&id=0341aad0&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/BookingsOfWeek.vue?vue&type=template&id=0341aad0& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "border m-2 p-2", attrs: { dusk: "bookings" } },
+    [
+      _vm._v("\n    Vos commandes de la semaine :\n\n    "),
+      _vm._l(_vm.bookingsOfWeek, function(bookingOfDay, day) {
+        return _c("div", { key: day }, [
+          bookingOfDay.length > 0
+            ? _c(
+                "div",
+                { staticClass: "border m-2 p-2" },
+                [
+                  _c("div", [
+                    _vm._v("Jour de la commande : "),
+                    _c("div", { staticClass: "capitalize" }, [
+                      _vm._v(_vm._s(_vm._f("moment")(day, "dddd Do MMMM")))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v("Contenu de la commande :")]),
+                  _vm._v(" "),
+                  _vm._l(bookingOfDay, function(booking) {
+                    return _c("meal", {
+                      key: booking.id,
+                      attrs: { meal: booking.scheduled_meal.meal },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "actions",
+                            fn: function() {
+                              return [
+                                _vm.editable && booking.editable
+                                  ? _c(
+                                      "div",
+                                      [
+                                        _vm._v(
+                                          "\n                        Nombre de part :\n                        "
+                                        ),
+                                        _c(
+                                          "jet-button",
+                                          {
+                                            attrs: { type: "button" },
+                                            nativeOn: {
+                                              click: function($event) {
+                                                return _vm.setQuantity(
+                                                  booking,
+                                                  booking.quantity - 1
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            -\n                        "
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", [
+                                          _vm._v(_vm._s(booking.quantity))
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "jet-button",
+                                          {
+                                            attrs: { type: "button" },
+                                            nativeOn: {
+                                              click: function($event) {
+                                                return _vm.setQuantity(
+                                                  booking,
+                                                  booking.quantity + 1
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                            +\n                        "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.editable && booking.editable
+                                  ? _c(
+                                      "jet-button",
+                                      {
+                                        attrs: { type: "button" },
+                                        nativeOn: {
+                                          click: function($event) {
+                                            return _vm.unbook(booking)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                        Annuler\n                    "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
+                            },
+                            proxy: true
+                          }
+                        ],
+                        null,
+                        true
+                      )
+                    })
+                  })
+                ],
+                2
+              )
+            : _vm._e()
+        ])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/Meal.vue?vue&type=template&id=98ae8de4&":
 /*!*******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/Meal.vue?vue&type=template&id=98ae8de4& ***!
@@ -45955,6 +46189,92 @@ var render = function() {
           _vm._v("\n        " + _vm._s(_vm.subtitle) + "\n    ")
         ])
       : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=template&id=7343be79&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=template&id=7343be79& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "border m-2 p-2" }, [
+    _c("div", [_vm._v("\n        Menu de la semaine\n    ")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "flex", attrs: { dusk: "week_menu" } },
+      _vm._l(_vm.scheduledMealsOfWeek, function(scheduledMealsOfDay, day) {
+        return _c("div", { key: day, staticClass: "border m-2 p-2 w-1/4" }, [
+          _c("div", { staticClass: "capitalize" }, [
+            _vm._v(_vm._s(_vm._f("moment")(day, "dddd Do MMMM")))
+          ]),
+          _vm._v(" "),
+          scheduledMealsOfDay.length > 0
+            ? _c(
+                "div",
+                _vm._l(scheduledMealsOfDay, function(scheduledMeal) {
+                  return _c("meal", {
+                    key: scheduledMeal.id,
+                    attrs: { meal: scheduledMeal.meal },
+                    scopedSlots: _vm._u(
+                      [
+                        {
+                          key: "actions",
+                          fn: function() {
+                            return [
+                              _vm.bookable && scheduledMeal.bookable
+                                ? _c(
+                                    "jet-button",
+                                    {
+                                      attrs: { dusk: "book", type: "button" },
+                                      nativeOn: {
+                                        click: function($event) {
+                                          return _vm.book(scheduledMeal)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                            Commander\n                        "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ]
+                          },
+                          proxy: true
+                        }
+                      ],
+                      null,
+                      true
+                    )
+                  })
+                }),
+                1
+              )
+            : _c("div", [
+                _vm._v("\n                Aucun plat au menu\n            ")
+              ])
+        ])
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = []
@@ -48373,9 +48693,19 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "py-12" }, [
         _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
-          _c("div", {
-            staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg"
-          })
+          _c(
+            "div",
+            { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
+            [
+              _c("scheduled-meals-of-week", {
+                attrs: {
+                  bookable: false,
+                  "scheduled-meals-of-week": _vm.scheduledMealsOfWeek
+                }
+              })
+            ],
+            1
+          )
         ])
       ])
     ]
@@ -48469,239 +48799,17 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "border m-2 p-2" }, [
-                _c("div", [
-                  _vm._v(
-                    "\n                        Menu de la semaine\n                    "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "flex", attrs: { dusk: "week_menu" } },
-                  _vm._l(_vm.scheduledMealsOfWeek, function(
-                    scheduledMealsOfDay,
-                    day
-                  ) {
-                    return _c(
-                      "div",
-                      { key: day, staticClass: "border m-2 p-2 w-1/4" },
-                      [
-                        _c("div", { staticClass: "capitalize" }, [
-                          _vm._v(_vm._s(_vm._f("moment")(day, "dddd Do MMMM")))
-                        ]),
-                        _vm._v(" "),
-                        scheduledMealsOfDay.length > 0
-                          ? _c(
-                              "div",
-                              _vm._l(scheduledMealsOfDay, function(
-                                scheduledMeal
-                              ) {
-                                return _c("meal", {
-                                  key: scheduledMeal.id,
-                                  attrs: { meal: scheduledMeal.meal },
-                                  scopedSlots: _vm._u(
-                                    [
-                                      {
-                                        key: "actions",
-                                        fn: function() {
-                                          return [
-                                            scheduledMeal.bookable
-                                              ? _c(
-                                                  "jet-button",
-                                                  {
-                                                    attrs: {
-                                                      dusk: "book",
-                                                      type: "button"
-                                                    },
-                                                    nativeOn: {
-                                                      click: function($event) {
-                                                        return _vm.book(
-                                                          scheduledMeal
-                                                        )
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                            Commander\n                                        "
-                                                    )
-                                                  ]
-                                                )
-                                              : _vm._e()
-                                          ]
-                                        },
-                                        proxy: true
-                                      }
-                                    ],
-                                    null,
-                                    true
-                                  )
-                                })
-                              }),
-                              1
-                            )
-                          : _c("div", [
-                              _vm._v(
-                                "\n                                Aucun plat au menu\n                            "
-                              )
-                            ])
-                      ]
-                    )
-                  }),
-                  0
-                )
-              ]),
+              _c("scheduled-meals-of-week", {
+                attrs: { "scheduled-meals-of-week": _vm.scheduledMealsOfWeek }
+              }),
               _vm._v(" "),
               _vm.hasBooking
-                ? _c(
-                    "div",
-                    {
-                      staticClass: "border m-2 p-2",
-                      attrs: { dusk: "bookings" }
-                    },
-                    [
-                      _vm._v(
-                        "\n\n                    Vos commandes de la semaine :\n\n                    "
-                      ),
-                      _vm._l(_vm.bookingsOfWeek, function(bookingOfDay, day) {
-                        return _c("div", { key: day }, [
-                          bookingOfDay.length > 0
-                            ? _c(
-                                "div",
-                                { staticClass: "border m-2 p-2" },
-                                [
-                                  _c("div", [
-                                    _vm._v("Jour de la commande : "),
-                                    _c("div", { staticClass: "capitalize" }, [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm._f("moment")(day, "dddd Do MMMM")
-                                        )
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", [
-                                    _vm._v("Contenu de la commande :")
-                                  ]),
-                                  _vm._v(" "),
-                                  _vm._l(bookingOfDay, function(booking) {
-                                    return _c("meal", {
-                                      key: booking.id,
-                                      attrs: {
-                                        meal: booking.scheduled_meal.meal
-                                      },
-                                      scopedSlots: _vm._u(
-                                        [
-                                          {
-                                            key: "actions",
-                                            fn: function() {
-                                              return [
-                                                _c(
-                                                  "div",
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                        Nombre de part :\n                                        "
-                                                    ),
-                                                    _c(
-                                                      "jet-button",
-                                                      {
-                                                        attrs: {
-                                                          type: "button"
-                                                        },
-                                                        nativeOn: {
-                                                          click: function(
-                                                            $event
-                                                          ) {
-                                                            return _vm.setQuantity(
-                                                              booking,
-                                                              booking.quantity -
-                                                                1
-                                                            )
-                                                          }
-                                                        }
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                                            -\n                                        "
-                                                        )
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c("span", [
-                                                      _vm._v(
-                                                        _vm._s(booking.quantity)
-                                                      )
-                                                    ]),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "jet-button",
-                                                      {
-                                                        attrs: {
-                                                          type: "button"
-                                                        },
-                                                        nativeOn: {
-                                                          click: function(
-                                                            $event
-                                                          ) {
-                                                            return _vm.setQuantity(
-                                                              booking,
-                                                              booking.quantity +
-                                                                1
-                                                            )
-                                                          }
-                                                        }
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                                            +\n                                        "
-                                                        )
-                                                      ]
-                                                    )
-                                                  ],
-                                                  1
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "jet-button",
-                                                  {
-                                                    attrs: { type: "button" },
-                                                    nativeOn: {
-                                                      click: function($event) {
-                                                        return _vm.unbook(
-                                                          booking
-                                                        )
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                        Annuler\n                                    "
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            },
-                                            proxy: true
-                                          }
-                                        ],
-                                        null,
-                                        true
-                                      )
-                                    })
-                                  })
-                                ],
-                                2
-                              )
-                            : _vm._e()
-                        ])
-                      })
-                    ],
-                    2
-                  )
+                ? _c("bookings-of-week", {
+                    attrs: { "bookings-of-week": _vm.bookingsOfWeek }
+                  })
                 : _vm._e()
-            ]
+            ],
+            1
           )
         ])
       ])
@@ -67087,6 +67195,75 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/Components/BookingsOfWeek.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/Components/BookingsOfWeek.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BookingsOfWeek_vue_vue_type_template_id_0341aad0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookingsOfWeek.vue?vue&type=template&id=0341aad0& */ "./resources/js/Components/BookingsOfWeek.vue?vue&type=template&id=0341aad0&");
+/* harmony import */ var _BookingsOfWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookingsOfWeek.vue?vue&type=script&lang=js& */ "./resources/js/Components/BookingsOfWeek.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BookingsOfWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BookingsOfWeek_vue_vue_type_template_id_0341aad0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _BookingsOfWeek_vue_vue_type_template_id_0341aad0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Components/BookingsOfWeek.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Components/BookingsOfWeek.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/Components/BookingsOfWeek.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingsOfWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./BookingsOfWeek.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/BookingsOfWeek.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingsOfWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Components/BookingsOfWeek.vue?vue&type=template&id=0341aad0&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/Components/BookingsOfWeek.vue?vue&type=template&id=0341aad0& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingsOfWeek_vue_vue_type_template_id_0341aad0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./BookingsOfWeek.vue?vue&type=template&id=0341aad0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/BookingsOfWeek.vue?vue&type=template&id=0341aad0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingsOfWeek_vue_vue_type_template_id_0341aad0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BookingsOfWeek_vue_vue_type_template_id_0341aad0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/Components/Meal.vue":
 /*!******************************************!*\
   !*** ./resources/js/Components/Meal.vue ***!
@@ -67238,6 +67415,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageHeader_vue_vue_type_template_id_0cab0ef2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PageHeader_vue_vue_type_template_id_0cab0ef2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/Components/ScheduledMealsOfWeek.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/Components/ScheduledMealsOfWeek.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ScheduledMealsOfWeek_vue_vue_type_template_id_7343be79___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ScheduledMealsOfWeek.vue?vue&type=template&id=7343be79& */ "./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=template&id=7343be79&");
+/* harmony import */ var _ScheduledMealsOfWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ScheduledMealsOfWeek.vue?vue&type=script&lang=js& */ "./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ScheduledMealsOfWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ScheduledMealsOfWeek_vue_vue_type_template_id_7343be79___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ScheduledMealsOfWeek_vue_vue_type_template_id_7343be79___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/Components/ScheduledMealsOfWeek.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ScheduledMealsOfWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ScheduledMealsOfWeek.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ScheduledMealsOfWeek_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=template&id=7343be79&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=template&id=7343be79& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScheduledMealsOfWeek_vue_vue_type_template_id_7343be79___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ScheduledMealsOfWeek.vue?vue&type=template&id=7343be79& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Components/ScheduledMealsOfWeek.vue?vue&type=template&id=7343be79&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScheduledMealsOfWeek_vue_vue_type_template_id_7343be79___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ScheduledMealsOfWeek_vue_vue_type_template_id_7343be79___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
