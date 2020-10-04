@@ -1,33 +1,38 @@
 <template>
-    <div class="border m-2 p-2" dusk="bookings">
-        Vos commandes de la semaine :
+    <div dusk="bookings">
+       <div class="text-center uppercase font-bold text-xl tracking-wide my-4"> 
+           Vos commandes de la semaine 
+        </div>
 
-        <div v-for="(bookingOfDay, day) in bookingsOfWeek" :key="day">
-            <div class="border m-2 p-2" v-if="bookingOfDay.length > 0">
-                <div>Jour de la commande : <div class="capitalize">{{ day | moment("dddd Do MMMM") }}</div></div>
-                <div>Contenu de la commande :</div>
+        <div class="flex m-2 p-2">
+            <div class="border-2 m-2 p-2 w-1/4 rounded-lg border-yellow-300" v-for="(bookingOfDay, day) in bookingsOfWeek" :key="day">
+                <div class="border border-gray-200 rounded m-2 p-2" v-if="bookingOfDay.length > 0">
+                    <div class="text-center">Jour de la commande : <div class="font-bold text-sm uppercase">{{ day | moment("dddd Do MMMM") }}</div></div>
 
-                <meal :meal="booking.scheduled_meal.meal" v-for="booking in bookingOfDay" :key="booking.id">
-                    <!-- Boutons spécifiques pour gérer la commande -->
-                    <template #actions>
-                        <div v-if="editable && booking.editable">
-                            Nombre de part :
-                            <jet-button v-if="booking.quantity > 1" @click.native="setQuantity(booking, booking.quantity - 1)" type="button">
-                                -
-                            </jet-button>
+                    <meal :meal="booking.scheduled_meal.meal" v-for="booking in bookingOfDay" :key="booking.id">
+                        <!-- Boutons spécifiques pour gérer la commande -->
+                        <template #actions>
+                            <div class="text-right my-4" ><!--v-if="editable && booking.editable"-->
+                                Nombre de part :
+                                <jet-button v-if="booking.quantity > 1" @click.native="setQuantity(booking, booking.quantity - 1)" type="button">
+                                    -
+                                </jet-button>
 
-                            <span>{{ booking.quantity }}</span>
+                                <span>{{ booking.quantity }}</span>
 
-                            <jet-button @click.native="setQuantity(booking, booking.quantity + 1)" type="button">
-                                +
-                            </jet-button>
-                        </div>
+                                <jet-button @click.native="setQuantity(booking, booking.quantity + 1)" type="button">
+                                    +
+                                </jet-button>
+                            </div>
 
-                        <jet-button v-if="editable && booking.editable" @click.native="selected = booking" type="button">
-                            Annuler
-                        </jet-button>
-                    </template>
-                </meal>
+                            <div class="text-center">
+                                <jet-button class="bg-red-600" @click.native="selected = booking" type="button"><!--v-if="editable && booking.editable"-->
+                                    Annuler
+                                </jet-button>
+                            </div>
+                        </template>
+                    </meal>
+                </div>
             </div>
         </div>
 

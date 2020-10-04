@@ -1995,6 +1995,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -2079,6 +2084,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     meal: {
@@ -2128,7 +2136,7 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     padding: function padding() {
       if (this.size === 'medium') {
-        return ['pb-40 pt-64'];
+        return ['pb-24 pt-40'];
       }
 
       if (this.size === 'small') {
@@ -2139,7 +2147,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     textSize: function textSize() {
       if (this.size === 'medium') {
-        return ['text-5xl'];
+        return ['text-6xl'];
       }
 
       if (this.size === 'small') {
@@ -2162,7 +2170,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -2283,13 +2290,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 /* harmony import */ var _Meal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Meal */ "./resources/js/Components/Meal.vue");
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3161,7 +3161,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['href', 'active'],
   computed: {
     classes: function classes() {
-      return this.active ? 'inline-flex items-center px-1 pt-1 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out' : 'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out';
+      return this.active ? 'inline-flex items-center px-1 pt-1 font-bold text-lg leading-5 text-blue-400 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out' : 'inline-flex items-center px-1 pt-1 font-bold text-lg leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out';
     }
   }
 });
@@ -3782,6 +3782,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../Components/PageHeader */ "./resources/js/Components/PageHeader.vue");
 /* harmony import */ var _Components_ScheduledMealsOfWeek__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Components/ScheduledMealsOfWeek */ "./resources/js/Components/ScheduledMealsOfWeek.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4747,6 +4758,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Components_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../Components/PageHeader */ "./resources/js/Components/PageHeader.vue");
 /* harmony import */ var _Components_Posts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../Components/Posts */ "./resources/js/Components/Posts.vue");
+//
+//
 //
 //
 //
@@ -51441,41 +51454,62 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "border m-2 p-2", attrs: { dusk: "bookings" } },
+    { attrs: { dusk: "bookings" } },
     [
-      _vm._v("\n    Vos commandes de la semaine :\n\n    "),
-      _vm._l(_vm.bookingsOfWeek, function(bookingOfDay, day) {
-        return _c("div", { key: day }, [
-          bookingOfDay.length > 0
-            ? _c(
-                "div",
-                { staticClass: "border m-2 p-2" },
-                [
-                  _c("div", [
-                    _vm._v("Jour de la commande : "),
-                    _c("div", { staticClass: "capitalize" }, [
-                      _vm._v(_vm._s(_vm._f("moment")(day, "dddd Do MMMM")))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [_vm._v("Contenu de la commande :")]),
-                  _vm._v(" "),
-                  _vm._l(bookingOfDay, function(booking) {
-                    return _c("meal", {
-                      key: booking.id,
-                      attrs: { meal: booking.scheduled_meal.meal },
-                      scopedSlots: _vm._u(
-                        [
-                          {
-                            key: "actions",
-                            fn: function() {
-                              return [
-                                _vm.editable && booking.editable
-                                  ? _c(
+      _c(
+        "div",
+        {
+          staticClass:
+            "text-center uppercase font-bold text-xl tracking-wide my-4"
+        },
+        [_vm._v(" \n       Vos commandes de la semaine \n    ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "flex m-2 p-2" },
+        _vm._l(_vm.bookingsOfWeek, function(bookingOfDay, day) {
+          return _c(
+            "div",
+            {
+              key: day,
+              staticClass: "border-2 m-2 p-2 w-1/4 rounded-lg border-yellow-300"
+            },
+            [
+              bookingOfDay.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "border border-gray-200 rounded m-2 p-2" },
+                    [
+                      _c("div", { staticClass: "text-center" }, [
+                        _vm._v("Jour de la commande : "),
+                        _c(
+                          "div",
+                          { staticClass: "font-bold text-sm uppercase" },
+                          [
+                            _vm._v(
+                              _vm._s(_vm._f("moment")(day, "dddd Do MMMM"))
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(bookingOfDay, function(booking) {
+                        return _c("meal", {
+                          key: booking.id,
+                          attrs: { meal: booking.scheduled_meal.meal },
+                          scopedSlots: _vm._u(
+                            [
+                              {
+                                key: "actions",
+                                fn: function() {
+                                  return [
+                                    _c(
                                       "div",
+                                      { staticClass: "text-right my-4" },
                                       [
                                         _vm._v(
-                                          "\n                        Nombre de part :\n                        "
+                                          "\n                            Nombre de part :\n                            "
                                         ),
                                         booking.quantity > 1
                                           ? _c(
@@ -51493,7 +51527,7 @@ var render = function() {
                                               },
                                               [
                                                 _vm._v(
-                                                  "\n                            -\n                        "
+                                                  "\n                                -\n                            "
                                                 )
                                               ]
                                             )
@@ -51518,49 +51552,57 @@ var render = function() {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                            +\n                        "
+                                              "\n                                +\n                            "
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "text-center" },
+                                      [
+                                        _c(
+                                          "jet-button",
+                                          {
+                                            staticClass: "bg-red-600",
+                                            attrs: { type: "button" },
+                                            nativeOn: {
+                                              click: function($event) {
+                                                _vm.selected = booking
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                Annuler\n                            "
                                             )
                                           ]
                                         )
                                       ],
                                       1
                                     )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _vm.editable && booking.editable
-                                  ? _c(
-                                      "jet-button",
-                                      {
-                                        attrs: { type: "button" },
-                                        nativeOn: {
-                                          click: function($event) {
-                                            _vm.selected = booking
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                        Annuler\n                    "
-                                        )
-                                      ]
-                                    )
-                                  : _vm._e()
-                              ]
-                            },
-                            proxy: true
-                          }
-                        ],
-                        null,
-                        true
-                      )
-                    })
-                  })
-                ],
-                2
-              )
-            : _vm._e()
-        ])
-      }),
+                                  ]
+                                },
+                                proxy: true
+                              }
+                            ],
+                            null,
+                            true
+                          )
+                        })
+                      })
+                    ],
+                    2
+                  )
+                : _vm._e()
+            ]
+          )
+        }),
+        0
+      ),
       _vm._v(" "),
       _c("jet-dialog-modal", {
         attrs: { show: _vm.selected },
@@ -51633,7 +51675,7 @@ var render = function() {
         ])
       })
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []
@@ -51658,42 +51700,53 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "border m-2 p-2" },
-    [
+  return _c("div", { staticClass: "border-gray-200 rounded border m-1" }, [
+    _c("div", [
       _vm.meal.photo
         ? _c("img", {
-            attrs: { width: "100", src: "/storage/" + _vm.meal.photo }
+            staticClass: "h-40 object-cover",
+            attrs: { width: "100%", src: "/storage/" + _vm.meal.photo }
           })
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", [_vm._v("\n        " + _vm._s(_vm.meal.title) + "\n    ")]),
-      _vm._v(" "),
-      _vm.meal.description
-        ? _c("div", [
-            _vm._v("\n        " + _vm._s(_vm.meal.description) + "\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", [_vm._v("\n        " + _vm._s(_vm.meal.price) + " €\n    ")]),
-      _vm._v(" "),
-      _vm.meal.file
-        ? _c("div", [
-            _c(
-              "a",
-              {
-                attrs: { href: "/storage/" + _vm.meal.file, target: "_blank" }
-              },
-              [_vm._v("Fichier")]
-            )
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm._t("actions")
-    ],
-    2
-  )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "px-4 my-4" },
+      [
+        _c("div", { staticClass: "font-bold text-lg" }, [
+          _vm._v("\n        " + _vm._s(_vm.meal.title) + "\n      ")
+        ]),
+        _vm._v(" "),
+        _vm.meal.description
+          ? _c("div", { staticClass: "text-gray-500" }, [
+              _vm._v("\n          " + _vm._s(_vm.meal.description) + "\n      ")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-right font-bold text-lg" }, [
+          _vm._v("\n          " + _vm._s(_vm.meal.price) + " €\n      ")
+        ]),
+        _vm._v(" "),
+        _vm.meal.file
+          ? _c("div", { staticClass: "text-right" }, [
+              _c(
+                "a",
+                {
+                  staticClass:
+                    "underline text-gray-400 text-sm text-right italic",
+                  attrs: { href: "/storage/" + _vm.meal.file, target: "_blank" }
+                },
+                [_vm._v("Allergènes")]
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm._t("actions")
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -51728,7 +51781,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _vm.subtitle
-      ? _c("h3", { staticClass: "text-white text-sm" }, [
+      ? _c("h3", { staticClass: "text-white text-xl" }, [
           _vm._v("\n        " + _vm._s(_vm.subtitle) + "\n    ")
         ])
       : _vm._e()
@@ -51756,25 +51809,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "my-6 mx-20" }, [
+    _vm.displayTitle
+      ? _c("div", { staticClass: "font-bold text-xl uppercase" }, [
+          _vm._v("\n    " + _vm._s(_vm.post.title) + "\n  ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
     _vm.displayPublicationDate
-      ? _c("div", [
+      ? _c("div", { staticClass: "text-gray-400 italic" }, [
           _vm._v(
-            "\n    Publié le : " +
+            "\n   " +
               _vm._s(_vm._f("moment")(_vm.post.published_at, "dddd Do MMMM")) +
               "\n  "
           )
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.displayTitle
-      ? _c("div", [_vm._v("\n    Titre : " + _vm._s(_vm.post.title) + "\n  ")])
-      : _vm._e(),
-    _vm._v(" "),
     _c(
       "div",
+      { staticClass: "mt-2 mb-8" },
       [
-        _vm._v("\n    Markdown :\n    "),
         _c("vue-showdown", {
           staticClass: "markdown-text",
           attrs: { markdown: _vm.post.description, tag: "span" }
@@ -51884,105 +51939,94 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "border m-2 p-2" },
+    { staticClass: "m-2 p-2" },
     [
-      _vm.nextWeek || _vm.previousWeek
-        ? _c(
-            "div",
-            { staticClass: "flex justify-between" },
-            [
-              _vm.previousWeek
-                ? _c(
-                    "jet-button",
-                    {
-                      attrs: { type: "button" },
-                      nativeOn: {
-                        click: function($event) {
-                          return _vm.goPrevious()
-                        }
-                      }
-                    },
-                    [_vm._v("\n            Semaine précédente\n        ")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.nextWeek
-                ? _c(
-                    "jet-button",
-                    {
-                      attrs: { type: "button" },
-                      nativeOn: {
-                        click: function($event) {
-                          return _vm.goNext()
-                        }
-                      }
-                    },
-                    [_vm._v("\n            Semaine suivante\n        ")]
-                  )
-                : _vm._e()
-            ],
-            1
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", [_vm._v("\n        Menu de la semaine\n    ")]),
+      _c(
+        "div",
+        {
+          staticClass:
+            "text-center uppercase font-bold text-xl tracking-wide my-4"
+        },
+        [_vm._v("\n        Menu de la semaine\n    ")]
+      ),
       _vm._v(" "),
       _c(
         "div",
         { staticClass: "flex", attrs: { dusk: "week_menu" } },
         _vm._l(_vm.scheduledMealsOfWeek, function(scheduledMealsOfDay, day) {
-          return _c("div", { key: day, staticClass: "border m-2 p-2 w-1/4" }, [
-            _c("div", { staticClass: "capitalize" }, [
-              _vm._v(_vm._s(_vm._f("moment")(day, "dddd Do MMMM YYYY")))
-            ]),
-            _vm._v(" "),
-            scheduledMealsOfDay.length > 0
-              ? _c(
-                  "div",
-                  _vm._l(scheduledMealsOfDay, function(scheduledMeal) {
-                    return _c("meal", {
-                      key: scheduledMeal.id,
-                      attrs: { meal: scheduledMeal.meal },
-                      scopedSlots: _vm._u(
-                        [
-                          {
-                            key: "actions",
-                            fn: function() {
-                              return [
-                                _vm.bookable && scheduledMeal.bookable
-                                  ? _c(
-                                      "jet-button",
-                                      {
-                                        attrs: { dusk: "book", type: "button" },
-                                        nativeOn: {
-                                          click: function($event) {
-                                            _vm.selected = scheduledMeal
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                            Commander\n                        "
-                                        )
-                                      ]
-                                    )
-                                  : _vm._e()
-                              ]
-                            },
-                            proxy: true
-                          }
-                        ],
-                        null,
-                        true
-                      )
-                    })
-                  }),
-                  1
-                )
-              : _c("div", [
-                  _vm._v("\n                Aucun plat au menu\n            ")
-                ])
-          ])
+          return _c(
+            "div",
+            {
+              key: day,
+              staticClass: "border-2 m-2 p-2 w-1/4 rounded-lg border-yellow-300"
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "font-bold text-center uppercase text-sm my-2" },
+                [_vm._v(_vm._s(_vm._f("moment")(day, "dddd Do MMMM")))]
+              ),
+              _vm._v(" "),
+              scheduledMealsOfDay.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "my-2" },
+                    _vm._l(scheduledMealsOfDay, function(scheduledMeal) {
+                      return _c("meal", {
+                        key: scheduledMeal.id,
+                        attrs: { meal: scheduledMeal.meal },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "actions",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "div",
+                                    { staticClass: "text-center my-2" },
+                                    [
+                                      true
+                                        ? _c(
+                                            "jet-button",
+                                            {
+                                              staticClass: "bg-green-400",
+                                              attrs: {
+                                                dusk: "book",
+                                                type: "button"
+                                              },
+                                              nativeOn: {
+                                                click: function($event) {
+                                                  _vm.selected = scheduledMeal
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                            Commander\n                        "
+                                              )
+                                            ]
+                                          )
+                                        : undefined
+                                    ],
+                                    1
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ],
+                          null,
+                          true
+                        )
+                      })
+                    }),
+                    1
+                  )
+                : _c("div", { staticClass: "my-2 p-2" }, [
+                    _vm._v("\n                Aucun plat au menu\n            ")
+                  ])
+            ]
+          )
         }),
         0
       ),
@@ -54504,8 +54548,43 @@ var render = function() {
     },
     [
       _vm._v(" "),
-      _c("div", { staticClass: "py-12" }, [
+      _c("div", { staticClass: "py-8" }, [
         _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
+          _vm.$page.user
+            ? _c("div", { staticClass: "text-xl text-center mb-6" }, [
+                _vm._v("\n                Pour commander\n                "),
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "ml-2 text-xl py-2 px-10 bg-blue-400 text-white rounded shadow-md",
+                    attrs: {
+                      href: "/commander",
+                      active: _vm.$page.currentRouteName == "commander"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    Cliquez ici\n                "
+                    )
+                  ]
+                )
+              ])
+            : _c("div", { staticClass: "text-xl text-center mb-6" }, [
+                _vm._v(
+                  "\n                Pour commander vos plats, veuillez créer un compte\n                "
+                ),
+                _c(
+                  "a",
+                  {
+                    staticClass:
+                      "ml-4 text-xl py-2 px-10 bg-blue-400 text-white rounded shadow-md",
+                    attrs: { href: "/register" }
+                  },
+                  [_vm._v("Inscription")]
+                )
+              ]),
+          _vm._v(" "),
           _c(
             "div",
             { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
@@ -55988,7 +56067,19 @@ var render = function() {
           _c(
             "div",
             { staticClass: "bg-white overflow-hidden shadow-xl sm:rounded-lg" },
-            [_c("posts", { attrs: { posts: _vm.posts } })],
+            [
+              _c(
+                "div",
+                { staticClass: "my-10 font-bold text-xl text-center" },
+                [
+                  _vm._v(
+                    "\n                    Dernières publications\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("posts", { attrs: { posts: _vm.posts } })
+            ],
             1
           )
         ])
@@ -75881,8 +75972,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Gpasini\cde\lepasseplat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Gpasini\cde\lepasseplat\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! D:\laragon\www\lepasseplat\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\lepasseplat\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

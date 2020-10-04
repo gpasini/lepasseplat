@@ -3,7 +3,7 @@
       <h2 :class="textSize" class="font-semibold text-white leading-tight">
           {{ title }}
       </h2>
-      <h3 v-if="subtitle" class="text-white text-sm">
+      <h3 v-if="subtitle" class="text-white text-xl">
           {{ subtitle }}
       </h3>
   </div>
@@ -29,7 +29,7 @@ export default {
   computed: {
     padding() {
       if (this.size === 'medium') {
-        return ['pb-40 pt-64']
+        return ['pb-24 pt-40']
       }
 
       if (this.size === 'small') {
@@ -40,7 +40,7 @@ export default {
     },
     textSize() {
       if (this.size === 'medium') {
-        return ['text-5xl']
+        return ['text-6xl']
       }
 
       if (this.size === 'small') {

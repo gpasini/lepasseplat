@@ -1,15 +1,14 @@
 <template>
-  <div>
-    <div v-if="displayPublicationDate">
-      Publié le : {{ post.published_at | moment("dddd Do MMMM") }}
+  <div class="my-6 mx-20">
+    <div class="font-bold text-xl uppercase" v-if="displayTitle">
+      {{ post.title }}
     </div>
 
-    <div v-if="displayTitle">
-      Titre : {{ post.title }}
+    <div class="text-gray-400 italic" v-if="displayPublicationDate">
+     {{ post.published_at | moment("dddd Do MMMM") }}
     </div>
 
-    <div>
-      Markdown :
+    <div class="mt-2 mb-8">
       <vue-showdown class="markdown-text" :markdown="post.description" tag="span"/>
     </div>
   </div>
