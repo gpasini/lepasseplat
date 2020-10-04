@@ -1,16 +1,6 @@
 <template>
-  <div class="border m-2 p-2">
-      <div v-if="nextWeek || previousWeek" class="flex justify-between">
-          <jet-button v-if="previousWeek" @click.native="goPrevious()" type="button">
-              Semaine précédente
-          </jet-button>
-
-          <jet-button v-if="nextWeek" @click.native="goNext()" type="button">
-              Semaine suivante
-          </jet-button>
-      </div>
-
-      <div>
+  <div class="m-2 p-2">
+      <div class="text-center uppercase font-bold text-xl tracking-wide my-4">
           Menu de la semaine
       </div>
 
@@ -18,22 +8,24 @@
           <div
               v-for="(scheduledMealsOfDay, day) in scheduledMealsOfWeek"
               :key="day"
-              class="border m-2 p-2 w-1/4"
+              class="border-2 m-2 p-2 w-1/4 rounded-lg border-yellow-300"
           >
-              <div class="capitalize">{{ day | moment("dddd Do MMMM YYYY") }}</div>
+              <div class="font-bold text-center uppercase text-sm my-2">{{ day | moment("dddd Do MMMM") }}</div>
 
-              <div v-if="scheduledMealsOfDay.length > 0">
+              <div v-if="scheduledMealsOfDay.length > 0" class="my-2">
                   <meal :meal="scheduledMeal.meal" v-for="scheduledMeal in scheduledMealsOfDay" :key="scheduledMeal.id">
                       <!-- Boutons spécifiques pour la commande -->
                       <template #actions>
+                        <div  class="text-center my-2">
                           <jet-button v-if="bookable && scheduledMeal.bookable" @click.native="selected = scheduledMeal" dusk="book" type="button">
                               Commander
                           </jet-button>
+                        </div>
                       </template>
                   </meal>
               </div>
 
-              <div v-else>
+              <div v-else class="my-2 p-2">
                   Aucun plat au menu
               </div>
           </div>
