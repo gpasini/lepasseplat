@@ -3402,6 +3402,81 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -53370,11 +53445,7 @@ var render = function() {
                         active: _vm.$page.currentRouteName == "accueil"
                       }
                     },
-                    [
-                      _vm._v(
-                        "\n                            Accueil\n                        "
-                      )
-                    ]
+                    [_vm._v("\n              Accueil\n            ")]
                   ),
                   _vm._v(" "),
                   _vm.$page.user
@@ -53386,11 +53457,7 @@ var render = function() {
                             active: _vm.$page.currentRouteName == "commander"
                           }
                         },
-                        [
-                          _vm._v(
-                            "\n                            Commander\n                        "
-                          )
-                        ]
+                        [_vm._v("\n              Commander\n            ")]
                       )
                     : _vm._e(),
                   _vm._v(" "),
@@ -53404,7 +53471,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            Horaires de service\n                        "
+                        "\n              Horaires de service\n            "
                       )
                     ]
                   ),
@@ -53419,7 +53486,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "\n                            Services & événements\n                        "
+                        "\n              Services & événements\n            "
                       )
                     ]
                   )
@@ -53449,18 +53516,14 @@ var render = function() {
                                       "button",
                                       {
                                         staticClass:
-                                          "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+                                          "uppercase py-2 px-4 flex text-sm border-2 rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
                                       },
                                       [
-                                        _c("img", {
-                                          staticClass:
-                                            "h-8 w-8 rounded-full object-cover",
-                                          attrs: {
-                                            src:
-                                              _vm.$page.user.profile_photo_url,
-                                            alt: _vm.$page.user.name
-                                          }
-                                        })
+                                        _vm._v(
+                                          "\n                  " +
+                                            _vm._s(_vm.$page.user.name) +
+                                            "\n                "
+                                        )
                                       ]
                                     )
                                   ]
@@ -53479,7 +53542,7 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                    Gestion du compte\n                                "
+                                          "\n                  Gestion du compte\n                "
                                         )
                                       ]
                                     ),
@@ -53489,7 +53552,7 @@ var render = function() {
                                       { attrs: { href: "/user/profile" } },
                                       [
                                         _vm._v(
-                                          "\n                                    Profil\n                                "
+                                          "\n                  Profil\n                "
                                         )
                                       ]
                                     ),
@@ -53514,7 +53577,7 @@ var render = function() {
                                           { attrs: { as: "button" } },
                                           [
                                             _vm._v(
-                                              "\n                                        Déconnexion\n                                    "
+                                              "\n                    Déconnexion\n                  "
                                             )
                                           ]
                                         )
@@ -53528,7 +53591,7 @@ var render = function() {
                             ],
                             null,
                             false,
-                            3291670061
+                            3053768508
                           )
                         })
                       : _c("div", [
@@ -53636,7 +53699,7 @@ var render = function() {
                       active: _vm.$page.currentRouteName == "accueil"
                     }
                   },
-                  [_vm._v("\n                    Accueil\n                ")]
+                  [_vm._v("\n          Accueil\n        ")]
                 ),
                 _vm._v(" "),
                 _vm.$page.user
@@ -53648,11 +53711,7 @@ var render = function() {
                           active: _vm.$page.currentRouteName == "commander"
                         }
                       },
-                      [
-                        _vm._v(
-                          "\n                    Commander\n                "
-                        )
-                      ]
+                      [_vm._v("\n          Commander\n        ")]
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -53664,11 +53723,7 @@ var render = function() {
                       active: _vm.$page.currentRouteName == "horaires"
                     }
                   },
-                  [
-                    _vm._v(
-                      "\n                    Horaires de service\n                "
-                    )
-                  ]
+                  [_vm._v("\n          Horaires de service\n        ")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -53679,11 +53734,7 @@ var render = function() {
                       active: _vm.$page.currentRouteName == "services"
                     }
                   },
-                  [
-                    _vm._v(
-                      "\n                    Services & événements\n                "
-                    )
-                  ]
+                  [_vm._v("\n          Services & événements\n        ")]
                 )
               ],
               1
@@ -53711,13 +53762,25 @@ var render = function() {
                           {
                             staticClass: "font-medium text-base text-gray-800"
                           },
-                          [_vm._v(_vm._s(_vm.$page.user.name))]
+                          [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(_vm.$page.user.name) +
+                                "\n            "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
                           "div",
                           { staticClass: "font-medium text-sm text-gray-500" },
-                          [_vm._v(_vm._s(_vm.$page.user.email))]
+                          [
+                            _vm._v(
+                              "\n              " +
+                                _vm._s(_vm.$page.user.email) +
+                                "\n            "
+                            )
+                          ]
                         )
                       ])
                     ]),
@@ -53735,11 +53798,7 @@ var render = function() {
                                 _vm.$page.currentRouteName == "profile.show"
                             }
                           },
-                          [
-                            _vm._v(
-                              "\n                        Profil\n                    "
-                            )
-                          ]
+                          [_vm._v("\n            Profil\n          ")]
                         ),
                         _vm._v(" "),
                         _c(
@@ -53759,7 +53818,7 @@ var render = function() {
                               { attrs: { as: "button" } },
                               [
                                 _vm._v(
-                                  "\n                            Déconnexion\n                        "
+                                  "\n              Déconnexion\n            "
                                 )
                               ]
                             )
@@ -75972,8 +76031,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\laragon\www\lepasseplat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\laragon\www\lepasseplat\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\laragon\www\lepasseplat\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\lepasseplat\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

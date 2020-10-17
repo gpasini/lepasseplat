@@ -107,6 +107,7 @@ class Booking extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+        ];
     }
 }
