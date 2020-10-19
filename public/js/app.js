@@ -2087,6 +2087,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     meal: {
@@ -51556,18 +51560,13 @@ var render = function() {
                     "div",
                     { staticClass: "border border-gray-200 rounded m-2 p-2" },
                     [
-                      _c("div", { staticClass: "text-center" }, [
-                        _vm._v("Jour de la commande : "),
-                        _c(
-                          "div",
-                          { staticClass: "font-bold text-sm uppercase" },
-                          [
-                            _vm._v(
-                              _vm._s(_vm._f("moment")(day, "dddd Do MMMM"))
-                            )
-                          ]
-                        )
-                      ]),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "text-center font-bold text-sm uppercase"
+                        },
+                        [_vm._v(_vm._s(_vm._f("moment")(day, "dddd Do MMMM")))]
+                      ),
                       _vm._v(" "),
                       _vm._l(bookingOfDay, function(booking) {
                         return _c("meal", {
@@ -51581,7 +51580,7 @@ var render = function() {
                                   return [
                                     _c(
                                       "div",
-                                      { staticClass: "text-right my-4" },
+                                      { staticClass: "text-center my-4" },
                                       [
                                         _vm._v(
                                           "\n                            Nombre de part :\n                            "
@@ -51642,7 +51641,7 @@ var render = function() {
                                         _c(
                                           "jet-button",
                                           {
-                                            staticClass: "bg-red-600",
+                                            staticClass: "bg-red-600 w-full",
                                             attrs: { type: "button" },
                                             nativeOn: {
                                               click: function($event) {
@@ -51789,33 +51788,35 @@ var render = function() {
       "div",
       { staticClass: "px-4 my-4" },
       [
-        _c("div", { staticClass: "font-bold text-lg" }, [
+        _c("div", { staticClass: "font-bold text-lg text-center" }, [
           _vm._v("\n        " + _vm._s(_vm.meal.title) + "\n      ")
         ]),
         _vm._v(" "),
         _vm.meal.description
-          ? _c("div", { staticClass: "text-gray-500" }, [
-              _vm._v("\n          " + _vm._s(_vm.meal.description) + "\n      ")
+          ? _c("div", { staticClass: "text-gray-500 leading-tight h-24" }, [
+              _c("div", { staticClass: "h-full" }, [
+                _vm._v(_vm._s(_vm.meal.description))
+              ])
             ])
           : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "text-right font-bold text-lg" }, [
+        _c("div", { staticClass: "font-bold text-lg text-center" }, [
           _vm._v("\n          " + _vm._s(_vm.meal.price) + " €\n      ")
         ]),
         _vm._v(" "),
         _vm.meal.file
-          ? _c("div", { staticClass: "text-right" }, [
+          ? _c("div", [
               _c(
                 "a",
                 {
                   staticClass:
-                    "underline text-gray-400 text-sm text-right italic",
+                    "underline text-gray-500 text-sm block text-center italic",
                   attrs: { href: "/storage/" + _vm.meal.file, target: "_blank" }
                 },
                 [_vm._v("Allergènes")]
               )
             ])
-          : _vm._e(),
+          : _c("div", [_c("br")]),
         _vm._v(" "),
         _vm._t("actions")
       ],
@@ -52064,7 +52065,8 @@ var render = function() {
                                         ? _c(
                                             "jet-button",
                                             {
-                                              staticClass: "bg-green-400",
+                                              staticClass:
+                                                "bg-green-400 w-full",
                                               attrs: {
                                                 dusk: "book",
                                                 type: "button"
@@ -52097,9 +52099,15 @@ var render = function() {
                     }),
                     1
                   )
-                : _c("div", { staticClass: "my-2 p-2" }, [
-                    _vm._v("\n                Aucun plat au menu\n            ")
-                  ])
+                : _c(
+                    "div",
+                    { staticClass: "my-2 p-2 text-center text-gray-400" },
+                    [
+                      _vm._v(
+                        "\n                Aucun plat au menu\n            "
+                      )
+                    ]
+                  )
             ]
           )
         }),
@@ -52385,7 +52393,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("img", { staticClass: "w-20", attrs: { src: "/img/logo.png" } })
+      _c("img", { staticClass: "w-24", attrs: { src: "/img/logo.png" } })
     ])
   }
 ]
@@ -52414,7 +52422,7 @@ var render = function() {
     "button",
     {
       staticClass:
-        "inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
+        "text-center items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray transition ease-in-out duration-150",
       attrs: { type: _vm.type }
     },
     [_vm._t("default")],
@@ -76031,8 +76039,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\lepasseplat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\lepasseplat\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! D:\laragon\www\lepasseplat\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\lepasseplat\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

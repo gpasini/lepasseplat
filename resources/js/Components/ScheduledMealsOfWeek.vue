@@ -18,7 +18,7 @@
                       <template #actions>
                         <div  class="text-center my-2">
                           <!-- bookable && scheduledMeal.bookable -->
-                          <jet-button class="bg-green-400" v-if="true" @click.native="selected = scheduledMeal" dusk="book" type="button">
+                          <jet-button class="bg-green-400 w-full" v-if="true" @click.native="selected = scheduledMeal" dusk="book" type="button">
                               Commander
                           </jet-button>
                         </div>
@@ -26,7 +26,7 @@
                   </meal>
               </div>
 
-              <div v-else class="my-2 p-2">
+              <div v-else class="my-2 p-2 text-center text-gray-400">
                   Aucun plat au menu
               </div>
           </div>
