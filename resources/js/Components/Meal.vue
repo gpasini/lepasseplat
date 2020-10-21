@@ -8,13 +8,13 @@
           {{ meal.title }}
         </div>
 
-        <div class="text-gray-500 leading-tight h-24" v-if="meal.description">
+        <div class="text-gray-500 leading-tight h-24" v-if="meal.description && displayDescription">
             <div class="h-full">{{ meal.description }}</div>
         </div>
         <div class="font-bold text-lg text-center">
             {{ meal.price }} €
         </div>
-        <div v-if="meal.file">
+        <div v-if="meal.file && displayFile">
             <a class="underline text-gray-500 text-sm block text-center italic" :href="`/storage/${meal.file}`" target="_blank">Allergènes</a>
         </div>
 
@@ -33,6 +33,14 @@ export default {
     meal: {
       type: Object,
       required: true,
+    },
+    displayDescription: {
+      type: Boolean,
+      default: true
+    },
+    displayFile: {
+      type: Boolean,
+      default: true
     }
   }
 }

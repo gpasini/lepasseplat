@@ -2096,6 +2096,14 @@ __webpack_require__.r(__webpack_exports__);
     meal: {
       type: Object,
       required: true
+    },
+    displayDescription: {
+      type: Boolean,
+      "default": true
+    },
+    displayFile: {
+      type: Boolean,
+      "default": true
     }
   }
 });
@@ -51541,7 +51549,7 @@ var render = function() {
           staticClass:
             "text-center uppercase font-bold text-xl tracking-wide my-4"
         },
-        [_vm._v(" \n       Vos commandes de la semaine \n    ")]
+        [_vm._v("\n       Vos commandes de la semaine\n    ")]
       ),
       _vm._v(" "),
       _c(
@@ -51571,7 +51579,11 @@ var render = function() {
                       _vm._l(bookingOfDay, function(booking) {
                         return _c("meal", {
                           key: booking.id,
-                          attrs: { meal: booking.scheduled_meal.meal },
+                          attrs: {
+                            meal: booking.scheduled_meal.meal,
+                            "display-description": false,
+                            "display-file": false
+                          },
                           scopedSlots: _vm._u(
                             [
                               {
@@ -51792,7 +51804,7 @@ var render = function() {
           _vm._v("\n        " + _vm._s(_vm.meal.title) + "\n      ")
         ]),
         _vm._v(" "),
-        _vm.meal.description
+        _vm.meal.description && _vm.displayDescription
           ? _c("div", { staticClass: "text-gray-500 leading-tight h-24" }, [
               _c("div", { staticClass: "h-full" }, [
                 _vm._v(_vm._s(_vm.meal.description))
@@ -51804,7 +51816,7 @@ var render = function() {
           _vm._v("\n          " + _vm._s(_vm.meal.price) + " €\n      ")
         ]),
         _vm._v(" "),
-        _vm.meal.file
+        _vm.meal.file && _vm.displayFile
           ? _c("div", [
               _c(
                 "a",
@@ -54604,7 +54616,7 @@ var render = function() {
               _c("page-header", {
                 attrs: {
                   title: "Le passe plat",
-                  subtitle: "Le meilleur des traiteurs"
+                  subtitle: "Les cuisines du monde"
                 }
               })
             ]
@@ -76039,8 +76051,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\laragon\www\lepasseplat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\laragon\www\lepasseplat\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! C:\Users\Gpasini\cde\lepasseplat\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Gpasini\cde\lepasseplat\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })

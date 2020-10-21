@@ -3,7 +3,7 @@
         <template #header>
             <page-header
                 title="Le passe plat"
-                subtitle="Le meilleur des traiteurs"
+                subtitle="Les cuisines du monde"
             />
         </template>
 
