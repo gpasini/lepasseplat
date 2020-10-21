@@ -1,1 +1,1 @@
-Fichier : resources/views/vendor/nova/partials/logo.blade.php
+<img class="w-16" src="/img/logo.png" />
