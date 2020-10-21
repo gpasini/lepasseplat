@@ -17,8 +17,7 @@
                       <!-- Boutons spécifiques pour la commande -->
                       <template #actions>
                         <div  class="text-center my-2">
-                          <!-- bookable && scheduledMeal.bookable -->
-                          <jet-button class="bg-green-400 w-full" v-if="true" @click.native="selected = scheduledMeal" dusk="book" type="button">
+                          <jet-button class="bg-green-400 w-full" v-if="bookable && scheduledMeal.bookable" @click.native="selected = scheduledMeal" dusk="book" type="button">
                               Commander
                           </jet-button>
                         </div>
