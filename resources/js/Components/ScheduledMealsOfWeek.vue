@@ -10,7 +10,7 @@
               :key="day"
               class="border-2 m-2 p-2 w-1/4 rounded-lg border-yellow-300"
           >
-              <div class="font-bold text-center uppercase text-sm my-2">{{ day | moment("dddd Do MMMM") }}</div>
+              <div class="font-bold text-center uppercase text-xs my-2">{{ day | moment("dddd Do MMMM") }}</div>
 
               <div v-if="scheduledMealsOfDay.length > 0" class="my-2">
                   <meal :meal="scheduledMeal.meal" v-for="scheduledMeal in scheduledMealsOfDay" :key="scheduledMeal.id">

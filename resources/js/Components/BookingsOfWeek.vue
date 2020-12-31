@@ -7,7 +7,7 @@
         <div class="flex m-2 p-2">
             <div class="border-2 m-2 p-2 w-1/4 rounded-lg border-yellow-300" v-for="(bookingOfDay, day) in bookingsOfWeek" :key="day">
                 <div class="border border-gray-200 rounded m-2 p-2" v-if="bookingOfDay.length > 0">
-                    <div class="text-center font-bold text-sm uppercase">{{ day | moment("dddd Do MMMM") }}</div>
+                    <div class="text-center font-bold text-xs uppercase">{{ day | moment("dddd Do MMMM") }}</div>
 
                     <meal :meal="booking.scheduled_meal.meal" v-for="booking in bookingOfDay" :key="booking.id" :display-description="false" :display-file="false">
                         <!-- Boutons spécifiques pour gérer la commande -->

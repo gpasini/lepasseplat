@@ -8,7 +8,7 @@
         </template>
 
         <div class="py-8">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="px-48">
                 <div v-if="$page.user" class="text-xl text-center mb-6">
                     Pour commander
                     <a class="ml-2 text-xl py-2 px-10 bg-blue-400 text-white rounded shadow-md" href="/commander" :active="$page.currentRouteName == 'commander'">

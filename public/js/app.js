@@ -2091,6 +2091,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     meal: {
@@ -2302,7 +2304,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_SecondaryButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../Jetstream/SecondaryButton */ "./resources/js/Jetstream/SecondaryButton.vue");
 /* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
 /* harmony import */ var _Meal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Meal */ "./resources/js/Components/Meal.vue");
-//
 //
 //
 //
@@ -51786,7 +51787,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "border-gray-200 rounded border m-1" }, [
+  return _c("div", { staticClass: "m-1" }, [
     _c("div", [
       _vm.meal.photo
         ? _c("img", {
@@ -51798,23 +51799,21 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "px-4 my-4" },
+      { staticClass: "my-4" },
       [
-        _c("div", { staticClass: "font-bold text-lg text-center" }, [
+        _c("div", { staticClass: "font-bold text-sm text-center" }, [
           _vm._v("\n        " + _vm._s(_vm.meal.title) + "\n      ")
         ]),
         _vm._v(" "),
-        _vm.meal.description && _vm.displayDescription
-          ? _c("div", { staticClass: "text-gray-500 leading-tight h-24" }, [
-              _c("div", { staticClass: "h-full" }, [
-                _vm._v(_vm._s(_vm.meal.description))
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _c("div", { staticClass: "font-bold text-lg text-center" }, [
+        _c("div", { staticClass: "font-bold text-md text-center" }, [
           _vm._v("\n          " + _vm._s(_vm.meal.price) + " €\n      ")
         ]),
+        _vm._v(" "),
+        _vm.meal.description && _vm.displayDescription
+          ? _c("div", { staticClass: "text-gray-500 leading-tight text-sm" }, [
+              _c("div", [_vm._v(_vm._s(_vm.meal.description))])
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _vm.meal.file && _vm.displayFile
           ? _c("div", [
@@ -52051,7 +52050,7 @@ var render = function() {
             [
               _c(
                 "div",
-                { staticClass: "font-bold text-center uppercase text-sm my-2" },
+                { staticClass: "font-bold text-center uppercase text-xs my-2" },
                 [_vm._v(_vm._s(_vm._f("moment")(day, "dddd Do MMMM")))]
               ),
               _vm._v(" "),
@@ -52073,7 +52072,7 @@ var render = function() {
                                     "div",
                                     { staticClass: "text-center my-2" },
                                     [
-                                      true
+                                      _vm.bookable && scheduledMeal.bookable
                                         ? _c(
                                             "jet-button",
                                             {
@@ -52095,7 +52094,7 @@ var render = function() {
                                               )
                                             ]
                                           )
-                                        : undefined
+                                        : _vm._e()
                                     ],
                                     1
                                   )
@@ -54628,7 +54627,7 @@ var render = function() {
     [
       _vm._v(" "),
       _c("div", { staticClass: "py-8" }, [
-        _c("div", { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8" }, [
+        _c("div", { staticClass: "px-48" }, [
           _vm.$page.user
             ? _c("div", { staticClass: "text-xl text-center mb-6" }, [
                 _vm._v("\n                Pour commander\n                "),
@@ -76051,8 +76050,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Gpasini\cde\lepasseplat\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Gpasini\cde\lepasseplat\resources\css\app.css */"./resources/css/app.css");
+__webpack_require__(/*! D:\laragon\www\lepasseplat\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laragon\www\lepasseplat\resources\css\app.css */"./resources/css/app.css");
 
 
 /***/ })
