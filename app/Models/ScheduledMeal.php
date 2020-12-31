@@ -69,6 +69,7 @@ class ScheduledMeal extends Model
             $date->startOfWeek()->addDays(2)->toDateString(),
             $date->startOfWeek()->addDays(3)->toDateString(),
             $date->startOfWeek()->addDays(4)->toDateString(),
+            $date->startOfWeek()->addDays(5)->toDateString(),
         ]);
     }
 }
