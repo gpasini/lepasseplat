@@ -1,6 +1,6 @@
 <template>
-  <div :class="padding" class="header text-center">
-      <h2 :class="textSize" class="font-semibold text-white leading-tight">
+  <div :class="padding" class="header text-center sm:pb-24 sm:pt-40 py-10">
+      <h2 :class="textSize" class="font-semibold text-white leading-tight sm:text-6xl text-3xl">
           {{ title }}
       </h2>
       <h3 v-if="subtitle" class="text-white text-xl">
@@ -25,31 +25,6 @@ export default {
       default: 'medium',
     }
   },
-
-  computed: {
-    padding() {
-      if (this.size === 'medium') {
-        return ['pb-24 pt-40']
-      }
-
-      if (this.size === 'small') {
-        return ['py-10'];
-      }
-
-      return [];
-    },
-    textSize() {
-      if (this.size === 'medium') {
-        return ['text-6xl']
-      }
-
-      if (this.size === 'small') {
-        return ['text-3xl'];
-      }
-
-      return [];
-    }
-  }
 }
 </script>
 

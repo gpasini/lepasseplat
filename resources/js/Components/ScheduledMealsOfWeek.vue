@@ -4,11 +4,11 @@
           Menu de la semaine
       </div>
 
-      <div dusk="week_menu" class="flex">
+      <div dusk="week_menu" class="sm:flex">
           <div
               v-for="(scheduledMealsOfDay, day) in scheduledMealsOfWeek"
               :key="day"
-              class="border-2 m-2 p-2 w-1/4 rounded-lg border-yellow-300"
+              class="border-2 m-2 p-2 w-full sm:w-1/4 rounded-lg border-yellow-300"
           >
               <div class="font-bold text-center uppercase text-xs my-2">{{ day | moment("dddd Do MMMM") }}</div>
 

@@ -8,16 +8,16 @@
         </template>
 
         <div class="py-8">
-            <div class="px-48">
-                <div v-if="$page.user" class="text-xl text-center mb-6">
+            <div class="sm:px-20 lg:px-48 px-4">
+                <div v-if="$page.user" class="sm:text-xl text-md text-center mb-6">
                     Pour commander
-                    <a class="ml-2 text-xl py-2 px-10 bg-blue-400 text-white rounded shadow-md" href="/commander" :active="$page.currentRouteName == 'commander'">
+                    <a class="ml-4 sm:inline block sm:text-xl sm:py-2 sm:px-10 text-md p-2 bg-blue-400 text-white rounded shadow-md" href="/commander" :active="$page.currentRouteName == 'commander'">
                         Cliquez ici
                     </a>
                 </div>
-                <div v-else class="text-xl text-center mb-6">
+                <div v-else class="sm:text-xl text-md text-center mb-6">
                     Pour commander vos plats, veuillez créer un compte
-                    <a href="/register" class="ml-4 text-xl py-2 px-10 bg-blue-400 text-white rounded shadow-md">Inscription</a>
+                    <a href="/register" class="ml-4 sm:inline block sm:text-xl sm:py-2 sm:px-10 text-md p-2 bg-blue-400 text-white rounded shadow-md">Inscription</a>
                 </div>
 
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
